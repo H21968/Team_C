@@ -16,6 +16,10 @@ public class N_PlayerController : MonoBehaviour
     Animator animator;            // Animator
     bool isMoving = false;        // 移動中フラグ
 
+    //ダメージ対応
+    public static int hp = 3; //Player HP
+
+
     // p1����p2�̊p�x��Ԃ�
     float GetAngle(Vector2 p1, Vector2 p2) 
     { 
