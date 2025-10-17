@@ -119,72 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1518365216 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8605625403640112128, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-  m_PrefabInstance: {fileID: 6386450375032355588}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1518365227
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518365216}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 4}
-  m_Direction: 0
---- !u!114 &1518365233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518365216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d16c3964808c04fa8a69afbaba58e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1518365234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518365216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ab5bb820f4420468ae11a1e3cefa57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2015713670
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,29 +264,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1414032124151334155, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670141688595459710, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670141688595459710, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670141688595459710, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1670141688595459710, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: 1670141688595459710, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.012
+      value: -0.054
       objectReference: {fileID: 0}
     - target: {fileID: 1670141688595459710, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -390,20 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: N_Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2739516128808059783, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8605625403640112128, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1518365227}
-    - targetCorrespondingSourceObject: {fileID: 8605625403640112128, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1518365233}
-    - targetCorrespondingSourceObject: {fileID: 8605625403640112128, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1518365234}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
