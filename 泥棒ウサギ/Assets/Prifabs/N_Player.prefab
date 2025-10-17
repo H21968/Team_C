@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1670141688595459710}
   - component: {fileID: 4911359116738982009}
-  - component: {fileID: 2739516128808059783}
   - component: {fileID: 1414032124151334155}
   - component: {fileID: 2176406589043559672}
+  - component: {fileID: 8847104459611474461}
   m_Layer: 0
   m_Name: N_Player
   m_TagString: Untagged
@@ -90,20 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2739516128808059783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8605625403640112128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5f8ffa8b4ab6f478c04fe1b5f71880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  angleZ: -90
 --- !u!50 &1414032124151334155
 Rigidbody2D:
   serializedVersion: 5
@@ -153,3 +139,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8847104459611474461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605625403640112128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5541fdcf48d6b5d43b89018dca40f6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  angleZ: -90
+  destroy_time: 1
+  destroy_vector_x: 0
+  destroy_vector_y: 5
+  zero_speed: 0

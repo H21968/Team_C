@@ -47,19 +47,19 @@ public class ItemData : MonoBehaviour
             else if (type == ItemType.arrow)
             {
                 //矢
-                ArrowShoot shoot = collision.gameObject.GetComponent<ArrowShoot>();
-                ItemKeeper.hasArrows += count;
+               // ArrowShoot shoot = collision.gameObject.GetComponent<ArrowShoot>();
+                //ItemKeeper.hasArrows += count;
             }
             else if(type==ItemType.Life)
             {
                 //ライフ
-                if (PlayerController.hp<3)
+                if (PlayerControll.hp<3)
                 {
                     //HPが3以下の場合加算する
-                    PlayerController.hp++;
+                    PlayerControll.hp++;
                 }
             }
-            else if(type==ItemType.Light)
+            else if (type == ItemType.Light)
             {
                 //ライト
                 ItemKeeper.hasLights += count;
