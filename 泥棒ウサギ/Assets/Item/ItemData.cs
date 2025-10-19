@@ -53,10 +53,10 @@ public class ItemData : MonoBehaviour
             else if(type==ItemType.Life)
             {
                 //ƒ‰ƒCƒt
-                if (PlayerControll.hp<3)
+                if (PlayerControll.player_hp<3)
                 {
                     //HP‚ª3ˆÈ‰º‚Ìê‡‰ÁŽZ‚·‚é
-                    PlayerControll.hp++;
+                    PlayerControll.player_hp++;
                 }
             }
             else if (type == ItemType.Light)

@@ -16,8 +16,8 @@ public class PlayerControll : MonoBehaviour
     Animator animator;            // Animator
     bool isMoving = false;        // 移動中フラグ
 
-    //ダメージ対応
-    public static int hp = 3;           //Player HP
+
+    public static int player_hp = 3;           //Player HP
     public static string gameState;     //gameの状態
     bool inDamage = false;              //ダメージ中フラグ
     public int destroy_time = 1;        //プレイヤーの破壊までの時間
@@ -171,8 +171,8 @@ public class PlayerControll : MonoBehaviour
     {
         if (gameState == "playing")
         {
-            hp--; //HPを減らす
-            if (hp > 0)
+            player_hp--; //HPを減らす
+            if (player_hp > 0)
             {
                 //移動停止
                 rbody.linearVelocity = new Vector2(zero_speed, zero_speed);
