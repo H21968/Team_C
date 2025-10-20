@@ -24,8 +24,18 @@ public class PlayerLightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerCnt == null)
+        {
+            playerCnt = GameObject.FindObjectOfType<PlayerControll>();
+            if (playerCnt == null)
+            {
+                Debug.Log("PlayerControllが見つかりません");
+                return;
+            }
+        }
         //ライトをプレイヤーに合わせて回転させる
-        transform.localEulerAngles = new Vector3(0, 0, playerCnt.angleZ - 90);
+        transform.position = playerCnt.transform.position;
+        light2d.transform.localRotation = Quaternion.Euler(0, 0, playerCnt.angleZ + 90);
         if (ItemKeeper.hasLights > 0)//ライトを持っている
         {
             lightTimer += Time.deltaTime;//フレーム時間を加算

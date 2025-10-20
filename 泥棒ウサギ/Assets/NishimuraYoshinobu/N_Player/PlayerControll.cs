@@ -48,7 +48,7 @@ public class PlayerControll : MonoBehaviour
         return angle;
     }
 
-
+  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -76,8 +76,6 @@ public class PlayerControll : MonoBehaviour
 
         if (isMoving == false)
         {
-           
-
             axisH = Input.GetAxisRaw("Horizontal"); // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
         }
@@ -85,6 +83,7 @@ public class PlayerControll : MonoBehaviour
         Vector2 fromPt = transform.position;
         Vector2 toPt = new Vector2(fromPt.x + axisH, fromPt.y + axisV);
         //移動方向から向いている方向とアニメーションを更新
+        
         int dir;
         if (angleZ >= -45 && angleZ < 45)
         {
@@ -110,13 +109,14 @@ public class PlayerControll : MonoBehaviour
         if (dir != direction)
         {
             direction = dir;
-            animator.SetInteger("Distinct", direction);
+           animator.SetInteger("Distinct", direction);
         }
 
     }
 
     void FixedUpdate()
     {
+
         //ゲーム中以外は何もしない
         if (gameState != "playing")
         {
@@ -142,6 +142,7 @@ public class PlayerControll : MonoBehaviour
 
         //移動速度を更新する
         rbody.linearVelocity = new Vector2(axisH, axisV).normalized * speed;
+        Debug.Log(rbody.linearVelocity);
     }
 
     public void SetAxis(float h, float v)
@@ -167,22 +168,32 @@ public class PlayerControll : MonoBehaviour
         }
     }
     //ダメージ
-    void GetDamage(GameObject enemy)
+   void GetDamage(GameObject enemy)
     {
         if (gameState == "playing")
         {
             player_hp--; //HPを減らす
+
             if (player_hp > 0)
             {
-                //移動停止
-                rbody.linearVelocity = new Vector2(zero_speed, zero_speed);
-                //敵キャラの反対方向にヒットバックさせる
-                Vector3 v = (transform.position - enemy.transform.position).normalized;
-                rbody.AddForce(new Vector2(v.x * 4, v.y * 4), ForceMode2D.Impulse);
-
                 //ダメージフラグ ON
                 inDamage = true;
+
+                //移動停止
+                rbody.linearVelocity =  Vector2.zero;
+                //敵キャラの反対方向にヒットバックさせる
+                //Vector2 hit = (transform.position - enemy.transform.position).normalized * 4f;
+                Vector2 hit = (transform.position - enemy.transform.position).normalized * 4f;
+                rbody.linearVelocity = hit;
+
+
+               
+                axisH = 0;
+                axisV = 0;
+               
                 Invoke("DamageEnd", 0.25f);
+               
+
             }
             else
             {
@@ -198,14 +209,14 @@ public class PlayerControll : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = true;//スプライトを元に戻す
     }
     //ゲームオーバー
-    void GameOver()
+    public  void GameOver()
     {
         gameState = "gameover";
         //ゲームオーバー演出
-        GetComponent<CircleCollider2D>().enabled = false;//プレイヤーのあたりを消す
+        GetComponent<BoxCollider2D>().enabled = false;//プレイヤーのあたりを消す
         rbody.linearVelocity = new Vector2(zero_speed, zero_speed);//移動停止
-        rbody.gravityScale = 2;                   //重力を戻す
-        rbody.AddForce(new Vector2(destroy_vector_x, destroy_vector_y), ForceMode2D.Impulse);//(x,y)ゲームオーバー時にプレイヤーにベクトルを加える
+        rbody.gravityScale = 2;                   //重力を戻す 2
+        rbody.linearVelocity = new Vector2(destroy_vector_x, destroy_vector_y);//(x,y)ゲームオーバー時にプレイヤーにベクトルを加える
         animator.SetBool("IsDead", true);//アニメーションの切り替え
         Destroy(gameObject, destroy_time);       //プレイヤーの破壊とそれまでの時間
 
