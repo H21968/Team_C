@@ -230,4 +230,16 @@ public class PlayerControll : MonoBehaviour
 
     }
 
+    //ゲームクリア 
+    public void GameClear()
+    {
+        gameState = "gameclear";
+        
+
+        GetComponent<BoxCollider2D>().enabled = false;//プレイヤーのあたりを消す
+        rbody.linearVelocity = new Vector2(zero_speed, zero_speed);//移動停止
+
+        Destroy(gameObject, 3.0f);
+    }
+
 }
