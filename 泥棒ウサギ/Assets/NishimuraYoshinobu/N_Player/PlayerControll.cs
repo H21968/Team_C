@@ -95,6 +95,7 @@ public class PlayerControll : MonoBehaviour
         {
             //ãŒü‚«
             dir = 2;
+            animator.SetInteger("Direction", direction);
         }
         else if (angleZ >= 135 && angleZ <= -45)
         {
@@ -162,14 +163,18 @@ public class PlayerControll : MonoBehaviour
     //ÚG
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Clear")//“G‚ÉG‚ê‚½ê‡‚Ìƒ_ƒ[ƒW”»’è
+        if (collision.gameObject.tag == "Clear")//ƒNƒŠƒA‚ÉG‚ê‚½ê‡‚Ì”»’è
         {
             GameClear(collision.gameObject);
         }
-            if (collision.gameObject.tag == "Enemy")//“G‚ÉG‚ê‚½ê‡‚Ìƒ_ƒ[ƒW”»’è
+        if (collision.gameObject.tag == "Enemy")//“G‚ÉG‚ê‚½ê‡‚Ìƒ_ƒ[ƒW”»’è
         {
             GetDamage(collision.gameObject);
         }
+        //if (collision.gameObject.tag == "")//ƒAƒCƒeƒ€‚ÉG‚ê‚½ê‡‚Ì”»’è
+        //{
+        //    Game(collision.gameObject);
+        //}
     }
     //ƒ_ƒ[ƒW
    void GetDamage(GameObject enemy)
