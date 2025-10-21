@@ -183,7 +183,7 @@ public class PlayerControll : MonoBehaviour
                 rbody.linearVelocity =  Vector2.zero;
                 //敵キャラの反対方向にヒットバックさせる
                 Vector2 hit = (transform.position - enemy.transform.position).normalized * 4f;
-                ////Vector2 hit = new Vector2(-4f,0f);
+              
                 rbody.linearVelocity = hit;
                 
 
