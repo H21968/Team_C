@@ -545,6 +545,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1414032124151334155, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414032124151334155, guid: 8a915f2335c91554198dc3383ef632f2, type: 3}
       propertyPath: m_LinearDamping
       value: 0
       objectReference: {fileID: 0}
