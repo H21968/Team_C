@@ -84,7 +84,7 @@ public class FUIManager : MonoBehaviour
         mainImage.SetActive(true);
         mainImage.GetComponent<Image>().sprite = gameClearSpr;//「GAME CLEAR」を設定する
         //ゲームをクリアにする
-        PlayerControll.gameState = "gameclear";
+        PlayerControll.gameState = "gameClear";
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -99,7 +99,7 @@ public class FUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHP;//HP更新
+        UpdateHP();//HP更新
 
     }
 }
