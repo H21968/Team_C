@@ -99,7 +99,11 @@ public class FUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         UpdateHP();//HP更新
+=======
+       // UpdateHP;//HP更新
+>>>>>>> 75045851abd065c2d2826938dd8587c0367cac07
 
     }
 }

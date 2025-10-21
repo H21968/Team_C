@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿//N_Torabasami
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,10 @@ public class Torabasami : MonoBehaviour//クラス
             if (dist < rectionDistance)
             {
                 isActive = true; //アクティブにする
+                if (isActive)
+                {
+                  //  Debug.Log("アクティブ化");
+                }
             }
             else
             {
@@ -55,12 +60,19 @@ public class Torabasami : MonoBehaviour//クラス
         //プレイヤーダメージ
         if(collision.gameObject.tag == "player")
         {
-            Player_HP player_hp = collision.gameObject.GetComponent<Player_HP>();
-
-            if (player_hp != null)
+            
+            PlayerControll player = collision.gameObject.GetComponent<PlayerControll>();
+            if (player != null)
             {
-                player_hp.TakeDamage((int)damage);
+                PlayerControll.player_hp -= ((int)damage);
                 Debug.Log("プレイヤーがダメージを受ける");
+
+                if (PlayerControll.player_hp <= 0)
+                   
+                {
+                    player.GameOver();
+                    Debug.Log("プレイヤー死亡");
+                }
             }
         }
     }
