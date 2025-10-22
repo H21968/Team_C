@@ -66,7 +66,7 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isMoving);
+        
 
         //ゲーム中以外とダメージ中は何もしない
         if (gameState != "playing" || inDamage)
@@ -74,17 +74,19 @@ public class PlayerControll : MonoBehaviour
             return;
         }
 
-        if (isMoving == false)
+        if (!isMoving)
         {
             axisH = Input.GetAxisRaw("Horizontal"); // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
         }
         //キー入力から移動角度を求める
         Vector2 fromPt = transform.position;
+      
         Vector2 toPt = new Vector2(fromPt.x + axisH, fromPt.y + axisV);
         //移動方向から向いている方向とアニメーションを更新
-        
-        int dir;
+        angleZ = GetAngle(fromPt, toPt);
+        int dir=0;
+       
         if (angleZ >= -45 && angleZ < 45)
         {
            
@@ -95,9 +97,9 @@ public class PlayerControll : MonoBehaviour
         {
             //上向き
             dir = 2;
-            animator.SetInteger("Direction", direction);
+           
         }
-        else if (angleZ >= 135 && angleZ <= -45)
+         else if (angleZ >= -135 && angleZ <= -45)
         {
             //下向き
             dir = 0;
@@ -105,14 +107,17 @@ public class PlayerControll : MonoBehaviour
         else
         {
             //左向き
-            dir = 1;
+             dir = 1;
+            
         }
+
+
         if (dir != direction)
         {
             direction = dir;
            animator.SetInteger("Distinct", direction);
         }
-
+       
     }
 
     void FixedUpdate()
@@ -143,7 +148,7 @@ public class PlayerControll : MonoBehaviour
 
         //移動速度を更新する
         rbody.linearVelocity = new Vector2(axisH, axisV).normalized * speed;
-        Debug.Log(rbody.linearVelocity);
+        //Debug.Log(rbody.linearVelocity);
     }
 
     public void SetAxis(float h, float v)
@@ -214,10 +219,7 @@ public class PlayerControll : MonoBehaviour
         }
     }
 
-    void StopMove()
-    {
-        rbody.linearVelocity = new Vector2(zero_speed, zero_speed);//移動停止
-    }
+    
     //ダメージ終了
     void DamageEnd()
     {
@@ -251,4 +253,10 @@ public class PlayerControll : MonoBehaviour
         Destroy(gameObject, 3.0f);
     }
 
+    //ゲーム
+    //public void Game(GameObject Clear)
+    //{
+    //    gameState = "game";
+       
+    //}
 }

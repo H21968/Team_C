@@ -35,7 +35,7 @@ public class PlayerLightController : MonoBehaviour
         }
         //ライトをプレイヤーに合わせて回転させる
         transform.position = playerCnt.transform.position;
-        light2d.transform.localRotation = Quaternion.Euler(0, 0, playerCnt.angleZ + 90);
+      //  light2d.transform.localRotation = Quaternion.Euler(0, 0, playerCnt.angleZ + 90);
         if (ItemKeeper.hasLights > 0)//ライトを持っている
         {
             lightTimer += Time.deltaTime;//フレーム時間を加算
