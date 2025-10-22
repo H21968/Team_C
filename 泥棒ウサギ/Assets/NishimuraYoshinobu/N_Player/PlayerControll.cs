@@ -163,18 +163,21 @@ public class PlayerControll : MonoBehaviour
     //接触
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Clear")//敵に触れた場合のダメージ判定
+
+        if (collision.gameObject.tag == "Item")//アイテムに触れた場合の判定
+        {
+            ItemGet(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Clear")//クリアに触れた場合の判定
         {
             GameClear(collision.gameObject);
         }
-            if (collision.gameObject.tag == "Enemy")//敵に触れた場合のダメージ判定
+
+        if (collision.gameObject.tag == "Enemy")//敵に触れた場合のダメージ判定
         {
             GetDamage(collision.gameObject);
         }
-        //if (collision.gameObject.tag == "")//アイテムに触れた場合の判定
-        //{
-        //    Game(collision.gameObject);
-        //}
     }
     //ダメージ
    void GetDamage(GameObject enemy)
