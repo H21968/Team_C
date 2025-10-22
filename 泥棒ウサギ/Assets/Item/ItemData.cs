@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //アイテムの種類
-public enum ItemType
+public enum ItemTypea
 {
     arrow,        //矢
     GoldKey,      //金の鍵
@@ -14,7 +14,7 @@ public enum ItemType
 
 public class ItemData : MonoBehaviour
 {
-    public ItemType type;
+    public ItemTypea type;
     public int count = 1;
     public int arrangeId = 0;
 
@@ -34,23 +34,23 @@ public class ItemData : MonoBehaviour
     {
         if(collision.gameObject.tag=="Player")
         {
-            if(type==ItemType.GoldKey)
+            if(type==ItemTypea.GoldKey)
             {
                 //金の鍵
                 ItemKeeper.hasGoldKeys += count;
             }
-            else if(type==ItemType.SilverKey)
+            else if(type==ItemTypea.SilverKey)
             {
                 //銀の鍵
                 ItemKeeper.hasSilverKeys += count;
             }
-            else if (type == ItemType.arrow)
+            else if (type == ItemTypea.arrow)
             {
                 //矢
                // ArrowShoot shoot = collision.gameObject.GetComponent<ArrowShoot>();
                 //ItemKeeper.hasArrows += count;
             }
-            else if(type==ItemType.Life)
+            else if(type==ItemTypea.Life)
             {
                 //ライフ
                 if (PlayerControll.player_hp<3)
@@ -59,7 +59,7 @@ public class ItemData : MonoBehaviour
                     PlayerControll.player_hp++;
                 }
             }
-            else if (type == ItemType.Light)
+            else if (type == ItemTypea.Light)
             {
                 //ライト
                 ItemKeeper.hasLights += count;
