@@ -256,4 +256,12 @@ public class PlayerControll : MonoBehaviour
         Destroy(gameObject, 3.0f);
     }
 
+    //アイテムゲット
+    public void ItemGet(GameObject Item)
+    {
+        gameState = "itemget";
+
+        gameState = "playing";
+    }
+
 }
