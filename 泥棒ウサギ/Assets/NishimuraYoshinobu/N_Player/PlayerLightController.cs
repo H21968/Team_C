@@ -18,7 +18,7 @@ public class PlayerLightController : MonoBehaviour
     {
         light2d = GetComponent<Light2D>(); //Light2Dを取得
         light2d.pointLightOuterRadius = (float)ItemKeeper.hasLights; //アイテムの数でライト距離を変更
-        playerCnt = GameObject.FindObjectOfType<PlayerControll>(); //PlayerController取得
+        playerCnt = GameObject.FindFirstObjectByType<PlayerControll>(); //PlayerController取得
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class PlayerLightController : MonoBehaviour
     {
         if (playerCnt == null)
         {
-            playerCnt = GameObject.FindObjectOfType<PlayerControll>();
+            playerCnt = GameObject.FindFirstObjectByType<PlayerControll>();
             if (playerCnt == null)
             {
                 Debug.Log("PlayerControllが見つかりません");

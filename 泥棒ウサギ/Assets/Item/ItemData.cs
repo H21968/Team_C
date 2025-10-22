@@ -63,7 +63,7 @@ public class ItemData : MonoBehaviour
             {
                 //ライト
                 ItemKeeper.hasLights += count;
-                GameObject.FindObjectOfType<PlayerLightController>().LightUpdate();
+                GameObject.FindFirstObjectByType<PlayerLightController>().LightUpdate();
             }
             //アイテム取得演出
             //あたりを消す
