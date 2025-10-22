@@ -23,7 +23,7 @@ public class ItemBox : MonoBehaviour
 
    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isClosed && collision.gameObject.tag == "Player")
+        if (isClosed && collision.gameObject.tag == "player")
         {
             //” ‚ª•Â‚Ü‚Á‚Ä‚¢‚éó‘Ô‚ÅƒvƒŒƒCƒ„[‚ÉÚG
             GetComponent<SpriteRenderer>().sprite = openImage;

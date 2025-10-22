@@ -168,11 +168,11 @@ public class PlayerControll : MonoBehaviour
     //接触
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Clear")//クリアに触れた場合の判定
+        if (collision.gameObject.tag == "Clear")//敵に触れた場合のダメージ判定
         {
             GameClear(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Enemy")//敵に触れた場合のダメージ判定
+            if (collision.gameObject.tag == "Enemy")//敵に触れた場合のダメージ判定
         {
             GetDamage(collision.gameObject);
         }
@@ -253,10 +253,4 @@ public class PlayerControll : MonoBehaviour
         Destroy(gameObject, 3.0f);
     }
 
-    //ゲーム
-    //public void Game(GameObject Clear)
-    //{
-    //    gameState = "game";
-       
-    //}
 }
