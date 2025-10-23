@@ -500,12 +500,16 @@ PrefabInstance:
       value: N_Player_3
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.158295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: -0.1669
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalPosition.z
