@@ -49,6 +49,10 @@ public class Torabasami : MonoBehaviour//クラス
             {
                 isActive = false;//非アクティブにする
             }
+            if (isActive&&Input.GetKeyDown(KeyCode.Z))
+            {
+                TakeDamage(10);
+            }
         }
         else
         {
@@ -86,7 +90,8 @@ public class Torabasami : MonoBehaviour//クラス
         {
             //破壊処理
             //あたりを消す
-            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+           
             //0.5秒後に消す
             Destroy(gameObject, 0.5f);
         }
