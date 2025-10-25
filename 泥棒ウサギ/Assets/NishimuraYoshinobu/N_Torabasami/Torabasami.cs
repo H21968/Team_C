@@ -11,7 +11,7 @@ public class Torabasami : MonoBehaviour//クラス
     public int torabasami_hp = 10;//このエネミーの㏋ 10
     public float damage;//プレイヤーに与えるダメージ量
 
-    public float rectionDistance = 3.0f;
+    public float rectionDistance = 0.1f;
 
     Rigidbody2D rbody;// Rigidbody2D
     Animation animator;//Animation
@@ -40,18 +40,12 @@ public class Torabasami : MonoBehaviour//クラス
             if (dist < rectionDistance)
             {
                 isActive = true; //アクティブにする
-                if (isActive)
+
+                if (isActive && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
                 {
-                  //  Debug.Log("アクティブ化");
+                    Debug.Log($"距離: {dist:F2}, isActive: {isActive}");
+                    TakeDamage(10);
                 }
-            }
-            else
-            {
-                isActive = false;//非アクティブにする
-            }
-            if (isActive&&Input.GetKeyDown(KeyCode.Z))
-            {
-                TakeDamage(10);
             }
         }
         else

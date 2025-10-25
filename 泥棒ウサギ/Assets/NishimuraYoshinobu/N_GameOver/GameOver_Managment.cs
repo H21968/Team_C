@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class GameOver_Managment : MonoBehaviour
 {
-    public GameObject startButton;   //もう一回ボタン
-    public GameObject endButton;     //終了ボタン
-    public GameObject Stage_aelectionButton;//ステージセレクトボタン
+  //  public GameObject N_startButton;   //もう一回ボタン
+    //public GameObject endButton;     //終了ボタン
+    //public GameObject Stage_aelectionButton;//ステージセレクトボタン
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,20 +24,20 @@ public class GameOver_Managment : MonoBehaviour
     }
 
     //もう一回ボタン押し
-    public void startButtonClicked()
-    {
+    //public void startButtonClicked()
+    //{
 
-    }
+    //}
 
     //終了ボタン押し
-    public void endButtonClicked()
-    {
+    //public void endButtonClicked()
+    //{
 
-    }
+    //}
 
     //ステージセレクトボタン押し
-    public void Stage_aelectionButtonClicked()
-    {
+    //public void Stage_aelectionButtonClicked()
+    //{
 
-    }
+    //}
 }

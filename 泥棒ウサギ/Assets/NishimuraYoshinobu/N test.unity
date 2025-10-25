@@ -136,10 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be188b7aa008e5443bb7995b1b6ec454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Z_key: 
-  Z_Delay: 1
-  Z_keyPrefab: {fileID: 0}
-  Z_Perception: 
+  Z_Delay: 2
 --- !u!1 &643563733
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,13 +456,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3516655075986996811, guid: 5eceae6ff41be044c9d390768d11aa02, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235834799291790372, guid: 5eceae6ff41be044c9d390768d11aa02, type: 3}
+      propertyPath: rectionDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5252768928061268688, guid: 5eceae6ff41be044c9d390768d11aa02, type: 3}
       propertyPath: m_Name
       value: N_Torabasami
       objectReference: {fileID: 0}
     - target: {fileID: 6136959739653091546, guid: 5eceae6ff41be044c9d390768d11aa02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.48
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 6136959739653091546, guid: 5eceae6ff41be044c9d390768d11aa02, type: 3}
       propertyPath: m_LocalPosition.y
@@ -522,11 +527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.158295
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 0.87
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalPosition.y
