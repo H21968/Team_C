@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
+
+
     public float speed = 3.0f;    // 移動スピード
     int direction = 0;            // 移動方向
     float axisH;                  // 横軸
@@ -53,6 +55,9 @@ public class PlayerControll : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
+ 
+
         rbody = GetComponent<Rigidbody2D>(); // Rigid body2Dを得る
         animator = GetComponent<Animator>(); // Animatorを得る
 
