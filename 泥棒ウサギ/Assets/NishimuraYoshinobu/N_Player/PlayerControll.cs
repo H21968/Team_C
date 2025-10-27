@@ -76,8 +76,9 @@ public class PlayerControll : MonoBehaviour
 
         if (!isMoving)
         {
-            axisH = Input.GetAxisRaw("Horizontal"); // 左右キー入力
+            axisH = Input.GetAxisRaw("Horizontal");  // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
+           
         }
         //キー入力から移動角度を求める
         Vector2 fromPt = transform.position;
