@@ -538,12 +538,16 @@ PrefabInstance:
       value: N_Player_3
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
+      propertyPath: m_Color.a
+      value: 0.56078434
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.9607843
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_Color.r
@@ -555,35 +559,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_Intensity
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LightType
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
+      propertyPath: m_LightOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_ShadowSoftness
-      value: 0.83
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
+      propertyPath: m_ShadowsEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_ShadowIntensity
-      value: 0.86
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_FalloffIntensity
-      value: 0.6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
+      propertyPath: m_LightVolumeEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
+      propertyPath: m_LightVolumeIntensity
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_PointLightInnerAngle
-      value: 40
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_PointLightOuterAngle
-      value: 120
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_PointLightInnerRadius
-      value: 3.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_PointLightOuterRadius
@@ -607,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713578769415592302, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_ShadowSoftnessFalloffIntensity
-      value: 0.73
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 7824699476399229473, guid: 37520bff7b48cb64c86a2d8d3e3aa375, type: 3}
       propertyPath: m_LocalScale.y
