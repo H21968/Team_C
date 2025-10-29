@@ -43,7 +43,6 @@ public class Torabasami : MonoBehaviour//クラス
 
                 if (isActive && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
                 {
-                    Debug.Log($"距離: {dist:F2}, isActive: {isActive}");
                     TakeDamage(10);
                 }
             }

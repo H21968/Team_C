@@ -71,27 +71,22 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         //ゲーム中以外とダメージ中は何もしない
         if (gameState != "playing" || inDamage)
         {
             return;
         }
-
-        if (!isMoving)
-        {
             axisH = Input.GetAxisRaw("Horizontal");  // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
-           
-        }
+     
+        animator.SetBool("IsMoving", axisH != 0 || axisV != 0);
+      
         //キー入力から移動角度を求める
         Vector2 fromPt = transform.position;
-      
         Vector2 toPt = new Vector2(fromPt.x + axisH, fromPt.y + axisV);
         //移動方向から向いている方向とアニメーションを更新
         angleZ = GetAngle(fromPt, toPt);
-        int dir=0;
+        int dir= direction;
        
         if (angleZ >= -45 && angleZ < 45)
         {
@@ -116,12 +111,11 @@ public class PlayerControll : MonoBehaviour
              dir = 1;
             
         }
-
-
         if (dir != direction)
         {
             direction = dir;
            animator.SetInteger("Distinct", direction);
+           
         }
        
     }
@@ -208,17 +202,11 @@ public class PlayerControll : MonoBehaviour
                 Vector2 hit = (transform.position - enemy.transform.position).normalized * 4f;
               
                 rbody.linearVelocity = hit;
-                
-
 
                 axisH = 0;
                 axisV = 0;
 
-               
-               
                 Invoke("DamageEnd", 0.25f);
-               
-
             }
             else
             {
