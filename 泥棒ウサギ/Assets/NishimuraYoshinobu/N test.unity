@@ -132,9 +132,10 @@ GameObject:
   - component: {fileID: 927913027}
   - component: {fileID: 927913028}
   - component: {fileID: 927913029}
+  - component: {fileID: 927913030}
   m_Layer: 0
   m_Name: Human_1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Human_speed: 2.2
   N_Human_HP: 2
-  damage: 0
+  Human1_damage: 3
 --- !u!50 &927913028
 Rigidbody2D:
   serializedVersion: 5
@@ -261,7 +262,7 @@ Animator:
   m_GameObject: {fileID: 927913024}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 225cadc1188937a4283e60a7bde5cbbd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -273,6 +274,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &927913030
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927913024}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -5.110903}
+  m_Size: {x: 9.0625, y: 13.7782}
+  m_Direction: 0
 --- !u!1 &2015713670
 GameObject:
   m_ObjectHideFlags: 0
