@@ -4,15 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class N_Human_Behavior : MonoBehaviour
 {
-    public float Human_speed = 1000.0f;//速度
+    public float Human_speed = 2.2f;//速度
     public int N_Human_HP = 2;//HP
     bool Human_isActive = false;//アクティブ
     float Human_rectionDistance = 5.0f;//プレイヤーの感知
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
-    bool H1_Moving = false;        // 移動中フラグ
-    float axisH;//横
-    float axisV;//縦
+    bool isActive = false;        // 移動中フラグ
     public float Human1_damage = 3;//プレイヤーに与えるダメージ量
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,9 +25,6 @@ public class N_Human_Behavior : MonoBehaviour
     {
         Vector2 move = Vector2.zero; 
 
-        axisH = 0;
-        axisV = 0;
-
         //playerのゲームオブジェクトを得る
         GameObject player = GameObject.FindGameObjectWithTag("player");
 
@@ -39,70 +34,45 @@ public class N_Human_Behavior : MonoBehaviour
             float dist = Vector2.Distance(transform.position, player.transform.position);
             if (dist < Human_rectionDistance)
             {
-                Human_isActive = true; //アクティブにする
-              
-               // animator.SetBool("isActive", Human_isActive);
-                float dx = player.transform.position.x - transform.position.x;
-                float dy = player.transform.position.y - transform.position.y;
-
+                isActive = true; //アクティブにする
+                animator.SetBool("isActive", isActive);
+               
+                //プレイヤーの方向に向かう
                 Vector2 dir = (player.transform.position-transform.position).normalized; 
                 move = dir * Human_speed; 
 
-                float rad  = Mathf.Atan2(axisV, axisH);
-                float angle = rad* Mathf.Deg2Rad;
+                float rad  = Mathf.Atan2(dir.y, dir.x);
+                float angle = rad * Mathf.Rad2Deg;
 
                 //移動角度でアニメーションを変更する
-                int H_1direction;
+                int Distinct;
                      if (angle >= -45 && angle < 45)
                     {
                     //右向き
-                    H_1direction = 3;
+                    Distinct = 3;
                     }
                     else if (angle >= 45 && angle <= 135)
                     {
                     //上向き
-                    H_1direction = 2;
+                    Distinct = 2;
                     }
                     else if (angle >= -135 && angle <= -45)
                     {
                     //下向き
-                    H_1direction = 0;
+                    Distinct = 0;
                     }
                     else
                     {
                     //左向き
-                    H_1direction = 1;
+                    Distinct = 1;
                     }
-                     animator.SetInteger("H_1Direction", H_1direction);
-                    //ベクトル
-                    axisH = Mathf.Cos(rad)*Human_speed;
+                     animator.SetInteger("Distinct", Distinct);
             }
         }
         else
         {
-            Human_isActive = false;
+            isActive = false;
         }
         rbody.linearVelocity = move;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //プレイヤーダメージ
-        if (collision.gameObject.tag == "player")
-        {
-
-            PlayerControll player = collision.gameObject.GetComponent<PlayerControll>();
-            if (player != null)
-            {
-                PlayerControll.player_hp -= ((int)Human1_damage);
-                Debug.Log("プレイヤーがダメージを受ける");
-
-                if (PlayerControll.player_hp <= 0)
-
-                {
-                    player.GameOver();
-                    Debug.Log("プレイヤー死亡");
-                }
-            }
-        }
     }
 }

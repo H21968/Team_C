@@ -16,7 +16,7 @@ public class PlayerControll : MonoBehaviour
     public float angleZ = -90.0f; // 回転角度 プレイヤーの向き
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
-    bool isMoving = false;        // 移動中フラグ
+   // bool isMoving = false;        // 移動中フラグ
 
 
     public static int player_hp = 3;           //Player HP
@@ -151,19 +151,19 @@ public class PlayerControll : MonoBehaviour
         //Debug.Log(rbody.linearVelocity);
     }
 
-    public void SetAxis(float h, float v)
-    {
-        axisH = h;
-        axisV = v;
-        if (axisH == 0 && axisV == 0)
-        {
-            isMoving = false;
-        }
-        else
-        {
-            isMoving = true;
-        }
-    }
+    //public void SetAxis(float h, float v)
+    //{
+    //    axisH = h;
+    //    axisV = v;
+    //    if (axisH == 0 && axisV == 0)
+    //    {
+    //        isMoving = false;
+    //    }
+    //    else
+    //    {
+    //        isMoving = true;
+    //    }
+    //}
 
     //接触
     private void OnCollisionEnter2D(Collision2D collision)
