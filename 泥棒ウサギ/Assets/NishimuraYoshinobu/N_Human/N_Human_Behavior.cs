@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 public class N_Human_Behavior : MonoBehaviour
@@ -8,6 +9,10 @@ public class N_Human_Behavior : MonoBehaviour
     public int N_Human_HP = 2;//HP
     bool Human_isActive = false;//アクティブ
     float Human_rectionDistance = 5.0f;//プレイヤーの感知
+    float axisH;//横軸値
+    float axisV;//縦軸値
+    float N_Human_Timer = 0.2f; //人間がうろつく時の間隔
+    float wabder_rectionDistance = 3f;//うろつく方向
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
     bool isActive = false;        // 移動中フラグ
@@ -72,7 +77,24 @@ public class N_Human_Behavior : MonoBehaviour
         else
         {
             isActive = false;
+            Wander();
         }
-        rbody.linearVelocity = move;
+
     }
+    void Wander()
+    {
+        if (Vector3.Distance(transform.position, transform.position) < 0.2f)
+        {
+            SetNewTarget();
+        }
+        transform.position = Vector3.MoveTowards(transform.position, transform.position, Human_speed * Time.deltaTime);
+    }
+
+    void SetNewTarget()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * wabder_rectionDistance;
+
+        transform.position = transform.position + randomDirection;
+    }
+
 }
