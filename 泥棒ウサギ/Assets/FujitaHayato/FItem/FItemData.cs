@@ -4,6 +4,8 @@ using UnityEngine;
 public enum ItemType
 {
     kyuuri, //きゅうり
+    kagi,   //鍵
+    nakama, //仲間
 }
 
 public class FItemData : MonoBehaviour
@@ -33,6 +35,17 @@ public class FItemData : MonoBehaviour
                 //きゅうり
                 ItemKeeper.haskyuuri += count;
             }
+            if (type == ItemType.kagi)
+            {
+                //鍵
+                ItemKeeper.haskagi += count;
+            }
+            if (type == ItemType.nakama)
+            {
+                //仲間
+                ItemKeeper.hasnakama += count;
+            }
+
 
             //アイテム取得演出
             //当たりを消す

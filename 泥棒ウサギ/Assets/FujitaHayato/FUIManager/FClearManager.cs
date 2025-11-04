@@ -27,7 +27,7 @@ public class FClearManager : MonoBehaviour
         //最初ufoを非表示にする用
         ufo.SetActive(false);
         //きゅうりの数が１の時ufoが現れる用
-        if(ItemKeeper.haskyuuri>=2)
+        if(ItemKeeper.haskyuuri>=2&&ItemKeeper.hasnakama>=1)
         {
             ufo.SetActive(true);    //ufoが出てくる
         }

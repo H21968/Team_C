@@ -8,6 +8,8 @@ public class ItemKeeper : MonoBehaviour
     public static int hasLights = 0;
     //‚±‚±‚©‚çŽg‚Á‚Ä‚é‚à‚Ì
     public static int haskyuuri = 0;
+    public static int haskagi = 0;
+    public static int hasnakama = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

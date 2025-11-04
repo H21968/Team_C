@@ -9,6 +9,7 @@ TagManager:
   - Clear
   - player
   - Enemy
+  - Exit
   layers:
   - Default
   - TransparentFX
