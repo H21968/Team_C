@@ -4,25 +4,26 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
-public class N_Human_Behavior : MonoBehaviour
+
+public class N_Dog1 : MonoBehaviour
 {
-    public float Human_speed = 2.2f;//速度
-    public int N_Human_HP = 2;//HP
-   // bool Human_isActive = false;//アクティブ
-    float Human_rectionDistance = 5.0f;//プレイヤーの感知
-    float N_Human_interval = 1f; //うろつく時の間隔
+    public float Dog_speed = 1.3f;//速度
+    public int N_Dog_HP = 2;//HP
+                              // bool Human_isActive = false;//アクティブ
+    float Human_rectionDistance = 7.0f;//プレイヤーの感知
+    float N_Human_interval = 3f; //うろつく時の間隔
     float wabder_Radius = 5f;    //うろつく範囲
-    float Human_Stop_Timer = 0;//止まる時間
-    float Human_Move_Timer = 0;//動く時間
+    float Dog_Stop_Timer = 0;//止まる時間
+    float Dog_Move_Timer = 0;//動く時間
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
+    bool isSleep = false;         // 睡眠中のフラグ
     bool isActive = false;        // 移動中フラグ
     bool isRunning = false;       //戻るフラグ
-    public float Human1_damage = 1;//プレイヤーに与えるダメージ量
+    public float Dog1_damage = 1;//プレイヤーに与えるダメージ量
 
     Vector3 target_Position;//ランダム移動目的地
     Vector3 Move_restriction;//移動制限
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,17 +32,22 @@ public class N_Human_Behavior : MonoBehaviour
         Move_restriction = transform.position;//出現位置を記録
 
         SetNewTarget();//最初に向かう位置
+
+        //最初は寝ていて動かない
+        rbody.linearVelocity = Vector2.zero;
+        isSleep = false;
+        animator.SetBool("Sleep", isSleep);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 move = Vector2.zero; 
+        Vector2 move = Vector2.zero;
         //playerのゲームオブジェクトを得る
-        GameObject player = GameObject.FindGameObjectWithTag("player"); 
+        GameObject player = GameObject.FindGameObjectWithTag("player");
         if (player == null)
         {
-          return; 
+            return;
         }
         if (player != null)
         {
@@ -49,12 +55,13 @@ public class N_Human_Behavior : MonoBehaviour
             float dist = Vector2.Distance(transform.position, player.transform.position);
             if (dist < Human_rectionDistance)
             {
+                isSleep = true;
+                animator.SetBool("Sleep", isSleep);
                 isActive = true; //アクティブにする
                 animator.SetBool("isActive", isActive);
-
                 //プレイヤーの方向に向かう
                 Vector2 dir = (player.transform.position - transform.position).normalized;
-                move = dir * Human_speed;
+                move = dir * Dog_speed;
 
                 rbody.linearVelocity = move;
 
@@ -86,22 +93,26 @@ public class N_Human_Behavior : MonoBehaviour
                 animator.SetInteger("Distinct", Distinct);
                 return;
             }
-            if (isActive && dist >= Human_rectionDistance && !isRunning) 
+            if (isActive && dist >= Human_rectionDistance && !isRunning)
             {
                 isActive = false;
                 isRunning = true;
                 animator.SetBool("isActive", false);
+                isSleep = false;
+                animator.SetBool("Sleep", isSleep);
             }
         }
+        
         isActive = false;
         animator.SetBool("isActive", false);
         Wander();
     }
+
     void Wander()
     {
         if (isRunning)
         {//戻るとき
-            rbody.linearVelocity = (Move_restriction - transform.position).normalized * Human_speed;
+            rbody.linearVelocity = (Move_restriction - transform.position).normalized * Dog_speed;
             if (Vector3.Distance(transform.position, Move_restriction) < 0.1f)
             {
                 isRunning = false;
@@ -110,23 +121,22 @@ public class N_Human_Behavior : MonoBehaviour
             }
             return;
         }
-        if (Human_Stop_Timer > 0)//止まる時間
+        if (Dog_Stop_Timer > 0)//止まる時間
         {
-            Human_Stop_Timer -= Time.deltaTime;
+            Dog_Stop_Timer -= Time.deltaTime;
             rbody.linearVelocity = Vector2.zero;
             return;
         }
 
-
         //目的地に向かう うろつき
-        Human_Move_Timer += Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target_Position, Human_speed * Time.deltaTime);
-        
+        Dog_Move_Timer += Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target_Position, Dog_speed * Time.deltaTime);
+        Sleeping();
         //現在位置がターゲット位置が近いなら新しい位置を設定
-        if (Vector3.Distance(transform.position, target_Position) < N_Human_interval || Human_Move_Timer >= N_Human_interval)
+        if (Vector3.Distance(transform.position, target_Position) < N_Human_interval || Dog_Move_Timer >= N_Human_interval)
         {
-            Human_Move_Timer = 0;
-            Human_Stop_Timer = Random.Range(0.5f, N_Human_interval);
+            Dog_Move_Timer = 0;
+            Dog_Stop_Timer = Random.Range(0.5f, N_Human_interval);
             SetNewTarget();
         }
     }
@@ -135,8 +145,15 @@ public class N_Human_Behavior : MonoBehaviour
     {
         //ランダムな方向を求める、範囲内を動く
         Vector2 randomDirection = Random.insideUnitCircle * wabder_Radius;
-       //新しい場所へ
-       target_Position = Move_restriction + (Vector3)randomDirection;
+        //新しい場所へ
+        target_Position = Move_restriction + (Vector3)randomDirection;
 
+    }
+    void Sleeping()
+    {
+        //寝ているときは動かない
+        isSleep = false;
+        animator.SetBool("Sleep", isSleep);
+        rbody.linearVelocity = Vector2.zero;
     }
 }
