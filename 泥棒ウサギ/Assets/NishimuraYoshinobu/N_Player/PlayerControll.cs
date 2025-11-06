@@ -260,7 +260,6 @@ public class PlayerControll : MonoBehaviour
         rbody.linearVelocity = new Vector2(destroy_vector_x, destroy_vector_y);//(x,y)ゲームオーバー時にプレイヤーにベクトルを加える
         animator.SetBool("IsDead", true);//アニメーションの切り替え
         Destroy(gameObject, destroy_time);       //プレイヤーの破壊とそれまでの時間
-
     }
 
     //ゲームクリア 
