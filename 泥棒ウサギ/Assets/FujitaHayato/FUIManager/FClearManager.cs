@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;   //UIを使うのに必要
 
 public class FClearManager : MonoBehaviour
@@ -10,14 +11,16 @@ public class FClearManager : MonoBehaviour
     public Sprite gameOverSpr;      //GAMEOVER画像
 
     public GameObject ufo;          //ufoのオブジェクトを触る用
+    public GameObject retryButton;  //リトライボタン
 
     Image titleImage;               //画像を表示しているImageコンポーネント
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //画像を非表示にする
+        //画像とボタンを非表示にする
         Invoke("InactiveImage", 1.0f);
+        retryButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,6 +42,8 @@ public class FClearManager : MonoBehaviour
             mainImage.SetActive(true);      //画像を表示する
 
             mainImage.GetComponent<Image>().sprite = gameClearSpr;    //画像を設定する
+
+            retryButton.SetActive(true);    //リトライボタン表示
         }
         //ゲームオーバーになった時
         else if (PlayerControll.gameState == "gameover")
@@ -56,6 +61,6 @@ public class FClearManager : MonoBehaviour
     //画像を非表示にする
     void InactiveImage()
     {
-        mainImage.SetActive(false);
+            mainImage.SetActive(false);
     }
 }

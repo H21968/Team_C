@@ -9,13 +9,16 @@ EditorBuildSettings:
     path: Assets/FujitaHayato/FTitle.unity
     guid: a9e7658f2b8f0c1499760bb0c420de24
   - enabled: 1
-    path: Assets/FujitaHayato/FWorldMap1.unity
-    guid: a12487be40dfa814ea5208abfc77c6bb
+    path: Assets/FujitaHayato/FStageSelect.unity
+    guid: f5f0e20d17753ff42859d5cbb3254651
   - enabled: 1
-    path: Assets/FujitaHayato/FMise1.unity
+    path: Assets/FujitaHayato/FStage/FHatake1.unity
+    guid: 8cc4122817ac2d84fb427d1854a79fdf
+  - enabled: 1
+    path: Assets/FujitaHayato/FStage/FMise1.unity
     guid: 52d80280cdeb5d54b90fd59facbae376
   - enabled: 1
-    path: Assets/FujitaHayato/FMiseDakuto1.unity
+    path: Assets/FujitaHayato/FStage/FMiseDakuto1.unity
     guid: 6e4d236ccb6fc3e4da1fcff30a5bd8c7
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity

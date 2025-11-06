@@ -3,9 +3,18 @@ using UnityEngine;
 //アイテムの種類
 public enum ItemType
 {
-    kyuuri, //きゅうり
-    kagi,   //鍵
-    nakama, //仲間
+    kyuuri,     //きゅうり  ＝何もなし
+    kyabetu,    //キャベツ  ＝体力回復
+    ninjin,     //にんじん  ＝スピードアップ
+    tamanegi,   //玉ねぎ    ＝スピードダウン
+
+    sakuranbo,  //さくらんぼ＝何もなし
+    ringo,      //リンゴ    ＝体力回復
+    nashi,      //ナシ      ＝スピードアップ
+    orange,     //オレンジ  ＝スピードダウン
+
+    kagi,       //鍵
+    nakama,     //仲間
 }
 
 public class FItemData : MonoBehaviour
@@ -30,11 +39,44 @@ public class FItemData : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
+            //野菜---------------------------------
             if (type == ItemType.kyuuri)
             {
                 //きゅうり
                 ItemKeeper.haskyuuri += count;
             }
+            if (type == ItemType.kyabetu)
+            {
+                //キャベツ
+                ItemKeeper.haskyabetu += count;
+            }
+            if (type == ItemType.ninjin)
+            {
+                //にんじん
+                ItemKeeper.hasninjin += count;
+            }
+            if (type == ItemType.tamanegi)
+            {
+                //玉ねぎ
+                ItemKeeper.hastamanegi += count;
+            }
+            //果物---------------------------------
+            if (type == ItemType.sakuranbo)
+            {
+                //さくらんぼ
+                ItemKeeper.hassakuranbo += count;
+            }
+            if (type == ItemType.ringo)
+            {
+                //リンゴ
+                ItemKeeper.hasringo += count;
+            }
+            if (type == ItemType.nashi)
+            {
+                //ナシ
+                ItemKeeper.hasnashi += count;
+            }
+            //アイテム-----------------------------
             if (type == ItemType.kagi)
             {
                 //鍵

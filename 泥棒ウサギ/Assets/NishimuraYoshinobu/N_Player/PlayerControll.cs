@@ -171,8 +171,23 @@ public class PlayerControll : MonoBehaviour
 
         if (collision.gameObject.tag == "Item")//アイテムに触れた場合の判定
         {
-            ItemGet(collision.gameObject);
+            ItemGet(collision.gameObject);          //何もなし
+            Destroy(collision.gameObject);
+            ItemGetHP(collision.gameObject);        //HP回復
+           
+          
         }
+        if (collision.gameObject.tag == "SpeedUP")
+        {
+            ItemGetSpeedUP(collision.gameObject);   //スピードアップ
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "SpeedDown")
+        {
+            ItemGetSpeedDown(collision.gameObject); //スピードダウン
+            Destroy(collision.gameObject);
+        }
+
 
         if (collision.gameObject.tag == "Clear")//クリアに触れた場合の判定
         {
@@ -184,8 +199,18 @@ public class PlayerControll : MonoBehaviour
             GetDamage(collision.gameObject);
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("SpeedUP"))
+    //    {
+    //        ItemGetSpeedUP(collision.gameObject);
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
+
     //ダメージ
-   void GetDamage(GameObject enemy)
+    void GetDamage(GameObject enemy)
     {
         if (gameState == "playing")
         {
@@ -257,5 +282,21 @@ public class PlayerControll : MonoBehaviour
 
         gameState = "playing";
     }
-
+    //HP回復
+    public void ItemGetHP(GameObject Item)
+    {
+        
+    }
+    //スピードアップ
+    public void ItemGetSpeedUP(GameObject Item)
+    {
+        speed += 5;
+        Debug.Log("Speed UP! 現在のスピード：" + speed);
+    }
+    //スピードダウン
+    public void ItemGetSpeedDown(GameObject Item)
+    {
+        speed -= 1;
+        Debug.Log("Speed Down! 現在のスピード：" + speed);
+    }
 }

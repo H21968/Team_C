@@ -7,7 +7,17 @@ public class ItemKeeper : MonoBehaviour
     public static int hasArrows = 0;
     public static int hasLights = 0;
     //ここから使ってるもの
+    //野菜---------------------------------
     public static int haskyuuri = 0;
+    public static int haskyabetu = 0;
+    public static int hasninjin = 0;
+    public static int hastamanegi = 0;
+    //果物---------------------------------
+    public static int hassakuranbo = 0;
+    public static int hasringo = 0;
+    public static int hasnashi = 0;
+    public static int hasorange = 0;
+    //アイテム-----------------------------
     public static int haskagi = 0;
     public static int hasnakama = 0;
 
