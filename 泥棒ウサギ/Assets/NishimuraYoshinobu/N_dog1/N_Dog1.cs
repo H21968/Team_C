@@ -1,18 +1,21 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class N_Dog1 : MonoBehaviour
 {
     public float Dog_speed = 1.3f;//速度
     public int N_Dog_HP = 2;//HP
                               // bool Human_isActive = false;//アクティブ
-    float Human_rectionDistance = 7.0f;//プレイヤーの感知
-    float N_Human_interval = 3f; //うろつく時の間隔
-    float wabder_Radius = 5f;    //うろつく範囲
+    float Human_rectionDistance = 4.0f;//プレイヤーの感知
+    float N_Player_Separated = 10.0f;//プレイヤーが離れた
+    float N_Human_interval = 5f; //うろつく時の間隔
+    float wabder_Radius = 7f;    //うろつく範囲
     float Dog_Stop_Timer = 0;//止まる時間
     float Dog_Move_Timer = 0;//動く時間
     Rigidbody2D rbody;            // Rigid body2
@@ -35,8 +38,9 @@ public class N_Dog1 : MonoBehaviour
 
         //最初は寝ていて動かない
         rbody.linearVelocity = Vector2.zero;
-        isSleep = false;
+        isSleep = true;
         animator.SetBool("Sleep", isSleep);
+        Sleeping();
     }
 
     // Update is called once per frame
@@ -52,10 +56,32 @@ public class N_Dog1 : MonoBehaviour
         if (player != null)
         {
             //プレイヤーをの距離チェックとアクティブ化
-            float dist = Vector2.Distance(transform.position, player.transform.position);
-            if (dist < Human_rectionDistance)
+           float dist = Vector2.Distance(transform.position, player.transform.position);
+            //プレイヤーが近づけば起きる
+            if (isSleep == true)
             {
-                isSleep = true;
+                if (dist < Human_rectionDistance)
+                {
+                    isSleep = false;
+                    animator.SetBool("Sleep", isSleep);
+                    return;
+                }
+                Sleeping();
+                return;
+            }
+            //プレイヤーが離れれば眠る&&戻るときは眠らない
+            if (isSleep == false && isRunning == false)
+            {
+                if (dist > N_Player_Separated)
+                {
+                    isSleep = true;
+                    Sleeping();
+                    return;
+                }
+            }
+                if (dist < Human_rectionDistance)
+            {
+                isSleep = false;
                 animator.SetBool("Sleep", isSleep);
                 isActive = true; //アクティブにする
                 animator.SetBool("isActive", isActive);
@@ -98,62 +124,112 @@ public class N_Dog1 : MonoBehaviour
                 isActive = false;
                 isRunning = true;
                 animator.SetBool("isActive", false);
-                isSleep = false;
-                animator.SetBool("Sleep", isSleep);
             }
         }
         
-        isActive = false;
-        animator.SetBool("isActive", false);
         Wander();
     }
-
+   
     void Wander()
     {
         if (isRunning)
         {//戻るとき
-            rbody.linearVelocity = (Move_restriction - transform.position).normalized * Dog_speed;
+            isActive = true;
+            animator.SetBool("isActive", isActive);
+
+            Vector2 dir = (Move_restriction - transform.position).normalized;
+
+            rbody.linearVelocity = dir * Dog_speed;
+
+            Move_Animation(dir);
+           
             if (Vector3.Distance(transform.position, Move_restriction) < 0.1f)
             {
                 isRunning = false;
                 rbody.linearVelocity = Vector2.zero;
+                isActive = false;
+                animator.SetBool("isActive", false);
                 SetNewTarget();
             }
             return;
         }
-        if (Dog_Stop_Timer > 0)//止まる時間
+     //   if (isActive == true)
         {
-            Dog_Stop_Timer -= Time.deltaTime;
-            rbody.linearVelocity = Vector2.zero;
-            return;
+            if (!isRunning && Dog_Stop_Timer > 0)//止まる時間
+            {
+                Dog_Stop_Timer -= Time.deltaTime;
+                rbody.linearVelocity = Vector2.zero;
+                isActive = false;
+                animator.SetBool("isActive", false);
+                return;
+            }
         }
-
         //目的地に向かう うろつき
+
         Dog_Move_Timer += Time.deltaTime;
+
+        Vector2 dirWander = (target_Position - transform.position).normalized;
+
+        Move_Animation(dirWander);
+
         transform.position = Vector3.MoveTowards(transform.position, target_Position, Dog_speed * Time.deltaTime);
-        Sleeping();
+        
         //現在位置がターゲット位置が近いなら新しい位置を設定
         if (Vector3.Distance(transform.position, target_Position) < N_Human_interval || Dog_Move_Timer >= N_Human_interval)
         {
             Dog_Move_Timer = 0;
             Dog_Stop_Timer = Random.Range(0.5f, N_Human_interval);
             SetNewTarget();
+          
         }
     }
 
     void SetNewTarget()
     {
-        //ランダムな方向を求める、範囲内を動く
-        Vector2 randomDirection = Random.insideUnitCircle * wabder_Radius;
-        //新しい場所へ
-        target_Position = Move_restriction + (Vector3)randomDirection;
-
+       // if (isActive == true)
+        {  //ランダムな方向を求める、範囲内を動く
+            Vector2 randomDirection = Random.insideUnitCircle * wabder_Radius;
+            //新しい場所へ
+            target_Position = Move_restriction + (Vector3)randomDirection;
+        }
     }
     void Sleeping()
     {
         //寝ているときは動かない
-        isSleep = false;
-        animator.SetBool("Sleep", isSleep);
-        rbody.linearVelocity = Vector2.zero;
+        if (isSleep == true)
+        {
+            rbody.linearVelocity = Vector2.zero;
+            animator.SetBool("Sleep", isSleep);
+            return ;
+        }
+    }
+    void Move_Animation(Vector2 dir)
+    {
+
+        float rad = Mathf.Atan2(dir.y, dir.x);
+        float angle2 = rad * Mathf.Rad2Deg;
+
+        int Distinct2;
+        if (angle2 >= -45 && angle2 < 45)
+        {
+            //右向き
+            Distinct2 = 3;
+        }
+        else if (angle2 >= 45 && angle2 <= 135)
+        {
+            //上向き
+            Distinct2 = 2;
+        }
+        else if (angle2 >= -135 && angle2 <= -45)
+        {
+            //下向き
+            Distinct2 = 0;
+        }
+        else
+        {
+            //左向き
+            Distinct2 = 1;
+        }
+        animator.SetInteger("Distinct", Distinct2);
     }
 }

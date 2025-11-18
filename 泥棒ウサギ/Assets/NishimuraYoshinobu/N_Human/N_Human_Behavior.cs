@@ -101,27 +101,38 @@ public class N_Human_Behavior : MonoBehaviour
     {
         if (isRunning)
         {//戻るとき
-            rbody.linearVelocity = (Move_restriction - transform.position).normalized * Human_speed;
+            //アニメーション戻るときに移動を反映----------------
+            Vector2 dir = (Move_restriction - transform.position).normalized;
+
+            rbody.linearVelocity = dir * Human_speed;
+
+            isActive = true;
+            animator.SetBool("isActive", isActive);
+            Move_Animation(dir);
+            //-------------------------------------------------
             if (Vector3.Distance(transform.position, Move_restriction) < 0.1f)
             {
                 isRunning = false;
                 rbody.linearVelocity = Vector2.zero;
+                isActive = false;
+                animator.SetBool("isActive", false);
                 SetNewTarget();
             }
             return;
         }
         if (Human_Stop_Timer > 0)//止まる時間
         {
+            isActive = false;
+            animator.SetBool("isActive", false);
             Human_Stop_Timer -= Time.deltaTime;
             rbody.linearVelocity = Vector2.zero;
             return;
         }
-
-
         //目的地に向かう うろつき
+
         Human_Move_Timer += Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target_Position, Human_speed * Time.deltaTime);
-        
+       
         //現在位置がターゲット位置が近いなら新しい位置を設定
         if (Vector3.Distance(transform.position, target_Position) < N_Human_interval || Human_Move_Timer >= N_Human_interval)
         {
@@ -138,5 +149,34 @@ public class N_Human_Behavior : MonoBehaviour
        //新しい場所へ
        target_Position = Move_restriction + (Vector3)randomDirection;
 
+    }
+    void Move_Animation(Vector2 dir)
+    {
+
+        float rad = Mathf.Atan2(dir.y, dir.x);
+        float angle2 = rad * Mathf.Rad2Deg;
+
+        int Distinct2;
+        if (angle2 >= -45 && angle2 < 45)
+        {
+            //右向き
+            Distinct2 = 3;
+        }
+        else if (angle2 >= 45 && angle2 <= 135)
+        {
+            //上向き
+            Distinct2 = 2;
+        }
+        else if (angle2 >= -135 && angle2 <= -45)
+        {
+            //下向き
+            Distinct2 = 0;
+        }
+        else
+        {
+            //左向き
+            Distinct2 = 1;
+        }
+        animator.SetInteger("Distinct", Distinct2);
     }
 }
