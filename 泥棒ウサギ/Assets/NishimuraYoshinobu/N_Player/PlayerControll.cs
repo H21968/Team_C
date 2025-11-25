@@ -5,6 +5,16 @@ using System.Collections.Generic;
 //using System.Numerics;
 using UnityEngine;
 
+//どのシーンからでもアクセスできるクラス
+public static class GameStatus
+{
+    //どのシーンからでもアクセスできる変数
+    public static int player_hp = 3;
+    public static float speed = 3.0f;
+}
+
+
+
 public class PlayerControll : MonoBehaviour
 {
 
@@ -19,7 +29,7 @@ public class PlayerControll : MonoBehaviour
    // bool isMoving = false;        // 移動中フラグ
 
 
-    public static int player_hp = 3;           //Player HP
+    public int player_hp = 3;           //Player HP
     public static string gameState;     //gameの状態
     bool inDamage = false;              //ダメージ中フラグ
     public int destroy_time = 1;        //プレイヤーの破壊までの時間
@@ -30,6 +40,8 @@ public class PlayerControll : MonoBehaviour
     // p1からp2の角度を返す
     float GetAngle(Vector2 p1, Vector2 p2)
     {
+       
+
         float angle;
         if (axisH != 0 || axisV != 0)
         {
@@ -55,8 +67,11 @@ public class PlayerControll : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
- 
+        //playerの中に静的を入れる
+        speed = GameStatus.speed;
+        player_hp = GameStatus.player_hp;
+
+
 
         rbody = GetComponent<Rigidbody2D>(); // Rigid body2Dを得る
         animator = GetComponent<Animator>(); // Animatorを得る
@@ -118,6 +133,11 @@ public class PlayerControll : MonoBehaviour
            
         }
        
+
+        //if(gameState=="gameclear"&&gameState=="gameover")
+        //{
+
+        //}
     }
 
     void FixedUpdate()
@@ -274,24 +294,72 @@ public class PlayerControll : MonoBehaviour
         Destroy(gameObject, 3.0f);
     }
 
-    //アイテムゲット
-    public void ItemGet(GameObject Item)
-    {
-        gameState = "itemget";
+    ////アイテムゲット
+    //public void ItemGet(GameObject Item)
+    //{
+    //    gameState = "itemget";
 
+    //    gameState = "playing";
+    //}
+
+    public void ItemGet(GameObject item)
+    {
+        // アイテムの ID 情報を取得
+        FItemID itemData = item.GetComponent<FItemID>();
+        if (itemData == null)
+        {
+            Debug.LogError("FItemID がアイテムに付いていません。");
+            return;
+        }
+
+        // インベントリを取得
+        FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
+
+        // インベントリに追加（ここが超重要！）
+        inventory.AddItem(itemData.itemId);
+
+        // アイテムを消す
+        Destroy(item);
+
+        // 状態変更など（任意）
+        gameState = "itemget";
         gameState = "playing";
     }
+
     //HP回復
     public void ItemGetHP(GameObject Item)
     {
         
     }
-    //スピードアップ
-    public void ItemGetSpeedUP(GameObject Item)
+    ////スピードアップ
+    //public void ItemGetSpeedUP(GameObject Item)
+    //{
+    //    speed += 1;
+    //    Debug.Log("Speed UP! 現在のスピード：" + speed);
+    //}
+
+    public void ItemGetSpeedUP(GameObject item)
     {
-        speed += 5;
+        // Speed UP 処理
+        speed += 1;
         Debug.Log("Speed UP! 現在のスピード：" + speed);
+
+        // FItemID を取得
+        FItemID itemData = item.GetComponent<FItemID>();
+        if (itemData == null)
+        {
+            Debug.LogError("FItemID がありません。");
+            return;
+        }
+
+        // プレイヤーのインベントリへ追加
+        FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
+        inventory.AddItem(itemData.itemId);
+
+        // アイテムを消す
+        Destroy(item);
     }
+
     //スピードダウン
     public void ItemGetSpeedDown(GameObject Item)
     {

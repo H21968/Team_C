@@ -31,6 +31,13 @@ public class FExit : MonoBehaviour
     {
         if(collision.gameObject.tag=="player")
         {
+            //Ã“I‚Éplayer‚ğ“ü‚ê‚Ä‚¢‚é
+            PlayerControll a = collision.gameObject.GetComponent<PlayerControll>();
+            GameStatus.speed = a.speed;
+            GameStatus.player_hp = a.player_hp;
+
+
+
             FRoomManager.ChangeScene(sceneName, doorNumber);
         }
     }

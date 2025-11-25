@@ -29,9 +29,9 @@ public class FUIManager : MonoBehaviour
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
-                if (PlayerControll.player_hp != hp)
+                if (GameStatus.player_hp != hp)
                 {
-                    hp = PlayerControll.player_hp;
+                    hp = GameStatus.player_hp;
                     if (hp <= 0)
                     {
                         lifeImage.GetComponent<Image>().sprite = life0Image;
@@ -65,7 +65,7 @@ public class FUIManager : MonoBehaviour
     public void Retry()
     {
         //HP‚ğ–ß‚·
-        PlayerControll.player_hp = 3;
+        GameStatus.player_hp = 3;
         //ƒQ[ƒ€’†‚É–ß‚·
         SceneManager.LoadScene(retrySceneName);//ƒV[ƒ“ˆÚ“®
     }
