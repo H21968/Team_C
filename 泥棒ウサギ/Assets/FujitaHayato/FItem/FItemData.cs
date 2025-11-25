@@ -88,10 +88,12 @@ public class FItemData : MonoBehaviour
                 ItemKeeper.hasnakama += count;
             }
 
+            gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
 
             //アイテム取得演出
             //当たりを消す
-            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            //gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            
             //アイテムのRigidbody2Dを取ってくる
             Rigidbody2D itemBody = GetComponent<Rigidbody2D>();
             //重力を戻す
@@ -99,7 +101,7 @@ public class FItemData : MonoBehaviour
             //上に跳ね上げる演出
             itemBody.AddForce(new Vector2(0, 6), ForceMode2D.Impulse);
             //0.5秒後に削除
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 1.0f);
 
         }
     }

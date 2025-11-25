@@ -12,6 +12,7 @@ TagManager:
   - Exit
   - SpeedUP
   - SpeedDown
+  - ItemHpUP
   layers:
   - Default
   - TransparentFX

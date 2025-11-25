@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3314419794483056823}
   - component: {fileID: 2390242213202270377}
   - component: {fileID: 3009212600920754509}
+  - component: {fileID: 6198369506767657990}
   m_Layer: 0
   m_Name: tamanegi
   m_TagString: SpeedDown
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3134003719347799008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4657621, y: -2.6059895, z: 0}
+  m_LocalPosition: {x: 3.5410051, y: -2.5779955, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120,7 +121,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -168,3 +169,17 @@ MonoBehaviour:
   type: 3
   count: 1
   arrangeId: 0
+--- !u!114 &6198369506767657990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134003719347799008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a295a569ea8b94b937bcc5bd83f1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 3
+  itemName: tamanegi

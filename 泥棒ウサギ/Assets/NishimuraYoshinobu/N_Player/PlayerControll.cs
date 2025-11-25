@@ -193,8 +193,6 @@ public class PlayerControll : MonoBehaviour
         {
             ItemGet(collision.gameObject);          //何もなし
             Destroy(collision.gameObject);
-            ItemGetHP(collision.gameObject);        //HP回復
-           
           
         }
         if (collision.gameObject.tag == "SpeedUP")
@@ -205,6 +203,11 @@ public class PlayerControll : MonoBehaviour
         if (collision.gameObject.tag == "SpeedDown")
         {
             ItemGetSpeedDown(collision.gameObject); //スピードダウン
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "ItemHpUP")
+        {
+            ItemGetHP(collision.gameObject);   //HP回復
             Destroy(collision.gameObject);
         }
 
@@ -304,18 +307,19 @@ public class PlayerControll : MonoBehaviour
 
     public void ItemGet(GameObject item)
     {
-        // アイテムの ID 情報を取得
+        // itemを取った 処理
+        Debug.Log("アイテムを取った");
+
+        // FItemID を取得
         FItemID itemData = item.GetComponent<FItemID>();
         if (itemData == null)
         {
-            Debug.LogError("FItemID がアイテムに付いていません。");
+            Debug.LogError("FItemID がありません。");
             return;
         }
 
-        // インベントリを取得
+        // プレイヤーのインベントリへ追加
         FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
-
-        // インベントリに追加（ここが超重要！）
         inventory.AddItem(itemData.itemId);
 
         // アイテムを消す
@@ -327,9 +331,26 @@ public class PlayerControll : MonoBehaviour
     }
 
     //HP回復
-    public void ItemGetHP(GameObject Item)
+    public void ItemGetHP(GameObject item)
     {
-        
+   // HP UP
+    player_hp += 1;
+    Debug.Log("HP UP! 現在のHP：" + player_hp);
+
+    // アイテムID取得
+    FItemID itemData = item.GetComponent<FItemID>();
+    if (itemData == null)
+    {
+        Debug.LogError("FItemID がありません。");
+        return;
+    }
+
+    // インベントリに記録（超重要）
+    FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
+    inventory.AddItem(itemData.itemId);
+
+    // アイテムを消す
+    Destroy(item);
     }
     ////スピードアップ
     //public void ItemGetSpeedUP(GameObject Item)
@@ -361,9 +382,25 @@ public class PlayerControll : MonoBehaviour
     }
 
     //スピードダウン
-    public void ItemGetSpeedDown(GameObject Item)
+    public void ItemGetSpeedDown(GameObject item)
     {
+        // Speed UP 処理
         speed -= 1;
-        Debug.Log("Speed Down! 現在のスピード：" + speed);
+        Debug.Log("Speed DOWN! 現在のスピード：" + speed);
+
+        // FItemID を取得
+        FItemID itemData = item.GetComponent<FItemID>();
+        if (itemData == null)
+        {
+            Debug.LogError("FItemID がありません。");
+            return;
+        }
+
+        // プレイヤーのインベントリへ追加
+        FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
+        inventory.AddItem(itemData.itemId);
+
+        // アイテムを消す
+        Destroy(item);
     }
 }
