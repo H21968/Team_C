@@ -3,9 +3,7 @@ using UnityEngine;
 public class N_fellow_Back : MonoBehaviour
 {
     public float speed = 3.0f;    // 移動スピード
-    //int direction = 0;            // 移動方向
-    //float axisH;                  // 横軸
-    //float axisV;                  // 縦軸
+    int direction = 0;            // 移動方向
     public float angleZ = -90.0f; // 回転角度 プレイヤーの向き
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
@@ -15,13 +13,13 @@ public class N_fellow_Back : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody2D>(); // Rigid body2Dを得る
         animator = GetComponent<Animator>(); // Animatorを得る
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Vector2  di r=  (target_Position - transform.position).normalized; ;
+        //Direction_Back(dir);
     }
     void Direction_Back(Vector2 dir)
     {

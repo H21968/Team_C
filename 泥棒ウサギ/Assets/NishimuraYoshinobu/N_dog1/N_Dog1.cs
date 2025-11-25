@@ -11,7 +11,7 @@ public class N_Dog1 : MonoBehaviour
 {
     public float Dog_speed = 1.3f;//速度
     public int N_Dog_HP = 2;//HP
-                              // bool Human_isActive = false;//アクティブ
+    // bool Human_isActive = false;//アクティブ
     float Human_rectionDistance = 4.0f;//プレイヤーの感知
     float N_Player_Separated = 10.0f;//プレイヤーが離れた
     float N_Human_interval = 5f; //うろつく時の間隔
@@ -31,6 +31,7 @@ public class N_Dog1 : MonoBehaviour
 
     Vector3 target_Position;//ランダム移動目的地
     Vector3 Move_restriction;//移動制限
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
