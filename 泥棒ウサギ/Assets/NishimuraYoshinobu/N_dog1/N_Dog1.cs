@@ -20,10 +20,14 @@ public class N_Dog1 : MonoBehaviour
     float Dog_Move_Timer = 0;//動く時間
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
+    bool Dog_isActive = false;       // 移動中フラグ
     bool isSleep = false;         // 睡眠中のフラグ
     bool isActive = false;        // 移動中フラグ
     bool isRunning = false;       //戻るフラグ
     public float Dog1_damage = 1;//プレイヤーに与えるダメージ量
+
+    float TargetReachDistance = 0.3f;   // 目的地に到達したとみなす距離
+    float WanderMoveDuration = 1.5f;    // 動き続ける最大時間
 
     Vector3 target_Position;//ランダム移動目的地
     Vector3 Move_restriction;//移動制限
@@ -83,6 +87,7 @@ public class N_Dog1 : MonoBehaviour
             {
                 isSleep = false;
                 animator.SetBool("Sleep", isSleep);
+                Dog_isActive = true;
                 isActive = true; //アクティブにする
                 animator.SetBool("isActive", isActive);
                 //プレイヤーの方向に向かう
@@ -119,46 +124,65 @@ public class N_Dog1 : MonoBehaviour
                 animator.SetInteger("Distinct", Distinct);
                 return;
             }
-            if (isActive && dist >= Human_rectionDistance && !isRunning)
+            if (Dog_isActive && dist >= Human_rectionDistance && !isRunning)
             {
+                // 帰還モード開始
+                Dog_isActive = false;
                 isActive = false;
                 isRunning = true;
                 animator.SetBool("isActive", false);
             }
         }
-        
+        //うろつき処理
         Wander();
     }
    
     void Wander()
     {
         if (isRunning)
-        {//戻るとき
+        {   //戻るとき
+
+            // 移動中はアニメON
             isActive = true;
             animator.SetBool("isActive", isActive);
 
+            // 元の位置の方向
             Vector2 dir = (Move_restriction - transform.position).normalized;
 
+            // 元の位置に向けて移動
             rbody.linearVelocity = dir * Dog_speed;
 
+            // 移動方向のアニメ更新
             Move_Animation(dir);
            
-            if (Vector3.Distance(transform.position, Move_restriction) < 0.1f)
+            if (Vector3.Distance(transform.position, Move_restriction) < 0.5f)
             {
+                // 帰還完了
                 isRunning = false;
+
+                // 停止
                 rbody.linearVelocity = Vector2.zero;
+
+                //アニメOFF
                 isActive = false;
                 animator.SetBool("isActive", false);
+
+                // 次のうろつき目標を設定
                 SetNewTarget();
             }
             return;
         }
-     //   if (isActive == true)
+
         {
             if (!isRunning && Dog_Stop_Timer > 0)//止まる時間
             {
+                //停止時間カウント
                 Dog_Stop_Timer -= Time.deltaTime;
+
+                //完全停止
                 rbody.linearVelocity = Vector2.zero;
+
+                //アニメOFF
                 isActive = false;
                 animator.SetBool("isActive", false);
                 return;
@@ -166,19 +190,31 @@ public class N_Dog1 : MonoBehaviour
         }
         //目的地に向かう うろつき
 
+        // 動いている時間のカウント
         Dog_Move_Timer += Time.deltaTime;
 
+        //目標への移動ベクトル
         Vector2 dirWander = (target_Position - transform.position).normalized;
 
+        // 移動中はアニメON
+        isActive = true;
+        animator.SetBool("isActive", isActive);
+
+        // 移動方向のアニメ更新
         Move_Animation(dirWander);
 
+        //現在位置から目標位置へ向けて移動
         transform.position = Vector3.MoveTowards(transform.position, target_Position, Dog_speed * Time.deltaTime);
-        
+        //rbody.linearVelocity = dirWander * Dog_speed;
+
         //現在位置がターゲット位置が近いなら新しい位置を設定
-        if (Vector3.Distance(transform.position, target_Position) < N_Human_interval || Dog_Move_Timer >= N_Human_interval)
+        if (Vector3.Distance(transform.position, target_Position) < TargetReachDistance || Dog_Move_Timer >= WanderMoveDuration)
         {
+            // 移動時間リセット
             Dog_Move_Timer = 0;
+            //ランダム停止時間セット
             Dog_Stop_Timer = Random.Range(0.5f, N_Human_interval);
+            // 新ターゲット決定
             SetNewTarget();
           
         }
@@ -186,8 +222,9 @@ public class N_Dog1 : MonoBehaviour
 
     void SetNewTarget()
     {
-       // if (isActive == true)
-        {  //ランダムな方向を求める、範囲内を動く
+     //ランダム方向生成
+        {   
+            //ランダムな方向を求める、範囲内を動く
             Vector2 randomDirection = Random.insideUnitCircle * wabder_Radius;
             //新しい場所へ
             target_Position = Move_restriction + (Vector3)randomDirection;
