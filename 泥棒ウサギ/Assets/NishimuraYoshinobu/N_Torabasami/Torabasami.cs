@@ -81,6 +81,7 @@ public class Torabasami : MonoBehaviour//クラス
         Debug.Log("トラバサミ解除");
         if(torabasami_hp <= 0)
         {
+
             //破壊処理
             //あたりを消す
             GetComponent<CapsuleCollider2D>().enabled = false;

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5849413ef770c8146bd3fe652cdb3a42
+guid: 4b022b2d5c6684f41a9da845d64562b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8860284859782550950
-    second: N_usagi_yoko_0
+      213: 7326808409790145317
+    second: Image (36)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: N_usagi_yoko_0
+      name: Image (36)_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 7
-        width: 322
-        height: 362
+        x: 95
+        y: 23
+        width: 202
+        height: 346
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5aa3e32dd1f90580800000000000000
-      internalID: -8860284859782550950
+      spriteID: 523e2eafd6d0ea560800000000000000
+      internalID: 7326808409790145317
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      N_usagi_yoko_0: -8860284859782550950
+      Image (36)_0: 7326808409790145317
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
