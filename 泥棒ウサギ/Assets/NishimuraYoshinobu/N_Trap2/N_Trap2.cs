@@ -1,41 +1,33 @@
-//N_Torabasami
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Torabasami : MonoBehaviour//クラス
+public class N_Trap2 : MonoBehaviour
 {
     //ヒットポイント
     public int torabasami_hp = 10;//このエネミーの? 10
     public float damage;//プレイヤーに与えるダメージ量
 
+    //感知
     public float rectionDistance = 0.1f;
-    int Anime_int = 0;
-    bool Anime_bool = false;
 
     Rigidbody2D rbody;// Rigidbody2D
     Animation animator;//Animation
 
     bool isActive = false;//アクティブフラグ
-    public int arrangeId = 0;//配置の識別に使う
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      rbody = GetComponent<Rigidbody2D>();//Rigidbody2Dを得る
-      animator = GetComponent<Animation>();//Animationを得る
+        rbody = GetComponent<Rigidbody2D>();//Rigidbody2Dを得る
+        animator = GetComponent<Animation>();//Animationを得る
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         //playerのゲームオブジェクトを得る
         GameObject player = GameObject.FindGameObjectWithTag("player");
 
-        if (player != null )
+        if (player != null)
         {
             //プレイヤーをの距離チェックとアクティブ化
             float dist = Vector2.Distance(transform.position, player.transform.position);
@@ -58,9 +50,9 @@ public class Torabasami : MonoBehaviour//クラス
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //プレイヤーダメージ
-        if(collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "player")
         {
-            
+
             PlayerControll player = collision.gameObject.GetComponent<PlayerControll>();
             if (player != null)
             {
@@ -68,7 +60,7 @@ public class Torabasami : MonoBehaviour//クラス
                 Debug.Log("プレイヤーがダメージを受ける");
 
                 if (PlayerControll.player_hp <= 0)
-                   
+
                 {
                     player.GameOver();
                     Debug.Log("プレイヤー死亡");
@@ -81,13 +73,13 @@ public class Torabasami : MonoBehaviour//クラス
         torabasami_hp -= amount;
 
         Debug.Log("トラバサミ解除");
-        if(torabasami_hp <= 0)
+        if (torabasami_hp <= 0)
         {
 
             //破壊処理
             //あたりを消す
             GetComponent<CapsuleCollider2D>().enabled = false;
-           
+
             //0.5秒後に消す
             Destroy(gameObject, 0.5f);
         }

@@ -16,7 +16,7 @@ public class PlayerControll : MonoBehaviour
     public float angleZ = -90.0f; // 回転角度 プレイヤーの向き
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
-   // bool isMoving = false;        // 移動中フラグ
+    //bool isMoving = false;        // 移動中フラグ
 
 
     public static int player_hp = 3;           //Player HP
