@@ -56,10 +56,10 @@ public class N_Trap2 : MonoBehaviour
             PlayerControll player = collision.gameObject.GetComponent<PlayerControll>();
             if (player != null)
             {
-                PlayerControll.player_hp -= ((int)damage);
+                GameStatus.player_hp -= ((int)damage);
                 Debug.Log("プレイヤーがダメージを受ける");
 
-                if (PlayerControll.player_hp <= 0)
+                if (GameStatus.player_hp <= 0)
 
                 {
                     player.GameOver();
