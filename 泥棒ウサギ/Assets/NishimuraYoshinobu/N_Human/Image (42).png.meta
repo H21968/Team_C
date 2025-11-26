@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c46200984ea58a41b209accd7f2aa59
+guid: f728c7dd6bb9adc4694f555ed25da78e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2859239557932767901
-    second: torabasami_0
+      213: 2242765030972761131
+    second: Image (42)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: torabasami_0
+      name: Image (42)_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 31
-        width: 370
-        height: 306
+        x: 271
+        y: 0
+        width: 250
+        height: 768
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3652cad55c0f158d0800000000000000
-      internalID: -2859239557932767901
+      spriteID: b24acc9b9e6ef1f10800000000000000
+      internalID: 2242765030972761131
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      torabasami_0: -2859239557932767901
+      Image (42)_0: 2242765030972761131
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
