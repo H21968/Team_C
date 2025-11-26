@@ -101,7 +101,7 @@ public class FItemData : MonoBehaviour
             //ã‚É’µ‚Ëã‚°‚é‰‰o
             itemBody.AddForce(new Vector2(0, 6), ForceMode2D.Impulse);
             //0.5•bŒã‚Éíœ
-            Destroy(gameObject, 1.0f);
+            Destroy(gameObject, 0.8f);
 
         }
     }

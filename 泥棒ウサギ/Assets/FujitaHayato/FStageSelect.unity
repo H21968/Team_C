@@ -1016,6 +1016,8 @@ GameObject:
   - component: {fileID: 1341046660}
   - component: {fileID: 1341046659}
   - component: {fileID: 1341046662}
+  - component: {fileID: 1341046664}
+  - component: {fileID: 1341046663}
   m_Layer: 5
   m_Name: Mise1
   m_TagString: Untagged
@@ -1086,7 +1088,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1341046660}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1341046664}
+        m_TargetAssemblyTypeName: FChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1341046660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,6 +1151,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a1b473f10992c42b5734afa61327b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1341046663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341046657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ea3385583ceb44bb7cec5d7cca95b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1341046664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341046657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f8cc7e61489a24fa97d738a11dba18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: FMise1
 --- !u!1 &1404809983
 GameObject:
   m_ObjectHideFlags: 0
