@@ -31,7 +31,7 @@ public class N_Z_key : MonoBehaviour
             Lnvestigate();
         }
 
-        //bool isActive = false;//アクティブ
+        //bool isActive_Z_key = false;//アクティブ
 
         //float rectionDistance = 2.0f;
 
@@ -48,7 +48,7 @@ public class N_Z_key : MonoBehaviour
         //    {
         //        isActive = true; //アクティブにする
 
-        //        if (isActive && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
+        //        if (isActive_Z_key && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
         //        {
         //               // ここにボタンををした後の処理を入れる
         //        }
@@ -56,7 +56,7 @@ public class N_Z_key : MonoBehaviour
         //}
         //else
         //{
-        //    isActive = false;
+        //    isActive_Z_key = false;
         //}
 
 

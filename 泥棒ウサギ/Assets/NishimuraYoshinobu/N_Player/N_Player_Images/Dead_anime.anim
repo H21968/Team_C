@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HUman1_Left
+  m_Name: Dead_anime
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 6217229593582334596, guid: 1303f490c044b1c4087be1c9a76619f0, type: 3}
+      value: {fileID: -8616334140972094473, guid: 3f10bc52d8d2abb4299da79dee9c88de, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 6217229593582334596, guid: 1303f490c044b1c4087be1c9a76619f0, type: 3}
+    - {fileID: -8616334140972094473, guid: 3f10bc52d8d2abb4299da79dee9c88de, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

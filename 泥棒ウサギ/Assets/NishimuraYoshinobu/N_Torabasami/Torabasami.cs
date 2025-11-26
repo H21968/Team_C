@@ -65,13 +65,12 @@ public class Torabasami : MonoBehaviour//クラス
             PlayerControll player = collision.gameObject.GetComponent<PlayerControll>();
             if (player != null)
             {
-//<<<<<<< HEAD
+
                 GameStatus.player_hp -= ((int)damage);
 
-                //=======
                 GameStatus.player_hp -= ((int)damage);
                 Debug.Log("プレイヤーがダメージを受ける");
-//>>>>>>> b60ca48cc3b594196516edf59da3b645a6b2b416
+
 
                 if (GameStatus.player_hp <= 0)
                    
