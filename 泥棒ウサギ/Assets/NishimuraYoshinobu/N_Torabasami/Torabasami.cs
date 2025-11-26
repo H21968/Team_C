@@ -2,6 +2,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +13,11 @@ public class Torabasami : MonoBehaviour//クラス
     public float damage;//プレイヤーに与えるダメージ量
 
     public float rectionDistance = 0.1f;
-    int Anime_int = 0;
-    bool Anime_bool = false;
-
+    
+    bool Anime_Bool = false;
+    bool Anime_Close = false;
     Rigidbody2D rbody;// Rigidbody2D
-    Animation animator;//Animation
+    Animator animator;//Animation
 
     bool isActive = false;//アクティブフラグ
     public int arrangeId = 0;//配置の識別に使う
@@ -25,7 +26,7 @@ public class Torabasami : MonoBehaviour//クラス
     void Start()
     {
       rbody = GetComponent<Rigidbody2D>();//Rigidbody2Dを得る
-      animator = GetComponent<Animation>();//Animationを得る
+      animator = GetComponent<Animator>();//Animatorを得る
     }
 
     // Update is called once per frame
@@ -84,11 +85,16 @@ public class Torabasami : MonoBehaviour//クラス
     public void TakeDamage(int amount)
     {
         torabasami_hp -= amount;
-
+        Anime_Bool = true;
+        animator.SetBool("Anime_Bool", Anime_Bool);
         Debug.Log("トラバサミ解除");
         if(torabasami_hp <= 0)
         {
 
+
+            Anime_Close = true;
+            animator.SetBool("Anime_int", Anime_Close);
+           
             //破壊処理
             //あたりを消す
             GetComponent<CapsuleCollider2D>().enabled = false;
