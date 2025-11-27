@@ -6,6 +6,7 @@ public class FChangeScene : MonoBehaviour
     public string sceneName;    //読み込むシーン名
 
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +22,7 @@ public class FChangeScene : MonoBehaviour
     //シーンを読み込む
     public void Load()
     {
+        GameStatus.active_task = true;
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -1,0 +1,9 @@
+diff a/泥棒ウサギ/Assets/FujitaHayato/FItem/FItemData.cs b/泥棒ウサギ/Assets/FujitaHayato/FItem/FItemData.cs	(rejected hunks)
+@@ -101,7 +101,6 @@
+             //��ɒ��ˏグ�鉉�o
+             itemBody.AddForce(new Vector2(0, 6), ForceMode2D.Impulse);
+             //0.5�b��ɍ폜
+-            Destroy(gameObject, 1.0f);
+             Destroy(gameObject, 0.8f);
+ 
+         }

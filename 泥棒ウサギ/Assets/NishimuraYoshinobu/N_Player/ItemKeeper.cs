@@ -24,7 +24,20 @@ public class ItemKeeper : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //ゲームがスタートしたときアイテムのカウントを0にする
+        //野菜-----------------
+        haskyuuri = 0;
+        haskyabetu = 0;
+        hasninjin = 0;
+        hastamanegi = 0;
+        //果物-----------------
+        hassakuranbo = 0;
+        hasringo = 0;
+        hasnashi = 0;
+        hasorange = 0;
+        //その他---------------
+        haskagi = 0;
+        hasnakama = 0;
     }
 
     // Update is called once per frame

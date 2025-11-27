@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7676232712558255704}
   - component: {fileID: 8991990825096751699}
   - component: {fileID: 6379128051549656124}
+  - component: {fileID: 190044197016490175}
   m_Layer: 0
   m_Name: HatenaBox
   m_TagString: ItemBox
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5232649200465843040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.05, y: 0.87, z: 0}
+  m_LocalPosition: {x: -0.14673, y: 0.58088, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -141,3 +142,17 @@ MonoBehaviour:
   itemPrefab: {fileID: 846579255802302670, guid: 761a9921ab48f1845be43a01312692bb, type: 3}
   isClosed: 1
   arrangeId: 0
+--- !u!114 &190044197016490175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5232649200465843040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a295a569ea8b94b937bcc5bd83f1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 0
+  itemName: 

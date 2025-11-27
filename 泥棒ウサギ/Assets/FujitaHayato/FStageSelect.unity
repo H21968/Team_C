@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 552704639}
   - component: {fileID: 552704638}
   - component: {fileID: 552704637}
+  - component: {fileID: 552704641}
   - component: {fileID: 552704640}
   m_Layer: 5
   m_Name: Mise2
@@ -467,7 +468,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 552704638}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 552704641}
+        m_TargetAssemblyTypeName: FChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &552704638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,9 +528,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 552704635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a1b473f10992c42b5734afa61327b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d1ea3385583ceb44bb7cec5d7cca95b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &552704641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552704635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f8cc7e61489a24fa97d738a11dba18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: FMise2
 --- !u!1 &616937269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1420,7 @@ GameObject:
   - component: {fileID: 1618673308}
   - component: {fileID: 1618673307}
   - component: {fileID: 1618673306}
+  - component: {fileID: 1618673310}
   - component: {fileID: 1618673309}
   m_Layer: 5
   m_Name: Hatake2
@@ -1465,7 +1492,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1618673307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1618673310}
+        m_TargetAssemblyTypeName: FChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1618673307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,9 +1552,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1618673304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a1b473f10992c42b5734afa61327b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d1ea3385583ceb44bb7cec5d7cca95b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1618673310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618673304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f8cc7e61489a24fa97d738a11dba18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: FHatake2
 --- !u!1 &1627677092
 GameObject:
   m_ObjectHideFlags: 0

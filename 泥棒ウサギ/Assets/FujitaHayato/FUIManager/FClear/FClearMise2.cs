@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;   //UIを使うのに必要
 
-public class FClearManager : MonoBehaviour
+public class FClearMise2 : MonoBehaviour
 {
     public GameObject mainImage;    //画像を持つGameObject
     public Sprite gameClearSpr;     //GAMECLEAR画像
@@ -17,8 +17,8 @@ public class FClearManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-            ////画像を非表示にする
-            //Invoke("InactiveImage", 1.0f);
+        if (GameStatus.active_task == false)
+            mainImage.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,6 +27,7 @@ public class FClearManager : MonoBehaviour
         // Zキーで画像を非表示（1秒後）
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            GameStatus.active_task = false;
             Invoke("InactiveImage", 0.3f);
         }
 
@@ -34,15 +35,15 @@ public class FClearManager : MonoBehaviour
         //きゅうりを取った時ufoが出現する処理
         //最初ufoを非表示にする用
         ufo.SetActive(false);
-        //きゅうりの数が１の時ufoが現れる用
-        if(ItemKeeper.haskyuuri>=2&&ItemKeeper.hasnakama>=1)
+        //きゅうりの数が6の時ufoが現れる用
+        if (ItemKeeper.hassakuranbo >= 7 && ItemKeeper.hasnakama >= 1)
         {
             ufo.SetActive(true);    //ufoが出てくる
         }
 
 
         //ゲームクリアした時
-        if (PlayerControll.gameState=="gameclear")
+        if (PlayerControll.gameState == "gameclear")
         {
             mainImage.SetActive(true);      //画像を表示する
 
@@ -56,7 +57,7 @@ public class FClearManager : MonoBehaviour
             mainImage.GetComponent<Image>().sprite = gameOverSpr;    //画像を設定する
         }
 
-        else if(PlayerControll.gameState=="playing")
+        else if (PlayerControll.gameState == "playing")
         {
             //ゲーム中
         }
@@ -64,6 +65,7 @@ public class FClearManager : MonoBehaviour
     //画像を非表示にする
     void InactiveImage()
     {
-            mainImage.SetActive(false);
+        mainImage.SetActive(false);
+
     }
 }

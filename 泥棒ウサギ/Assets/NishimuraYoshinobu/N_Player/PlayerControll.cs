@@ -11,6 +11,7 @@ public static class GameStatus
     //どのシーンからでもアクセスできる変数
     public static int player_hp = 3;
     public static float speed = 3.0f;
+    public static bool active_task = true;
 }
 
 
@@ -294,7 +295,7 @@ public class PlayerControll : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;//プレイヤーのあたりを消す
         rbody.linearVelocity = new Vector2(zero_speed, zero_speed);//移動停止
 
-        Destroy(gameObject, 3.0f);
+        Destroy(gameObject, 0.5f);
     }
 
     ////アイテムゲット
