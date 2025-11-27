@@ -32,6 +32,9 @@ public class N_Dog1 : MonoBehaviour
     Vector3 target_Position;//ランダム移動目的地
     Vector3 Move_restriction;//移動制限
 
+    // +++ サウンド追加
+    public AudioClip meBOSS_Sound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,6 +70,16 @@ public class N_Dog1 : MonoBehaviour
             {
                 if (dist < Human_rectionDistance)
                 {
+                    // +++サウンド
+                    AudioSource soundPlayer = GetComponent<AudioSource>();
+                    if (soundPlayer != null)
+                    {
+                        //サウンドを止める
+                        soundPlayer.Stop();
+             
+                        //サウンドを鳴らす
+                        soundPlayer.PlayOneShot(meBOSS_Sound);
+                    }
                     isSleep = false;
                     animator.SetBool("Sleep", isSleep);
                     return;
@@ -86,6 +99,7 @@ public class N_Dog1 : MonoBehaviour
             }
                 if (dist < Human_rectionDistance)
             {
+               
                 isSleep = false;
                 animator.SetBool("Sleep", isSleep);
                 Dog_isActive = true;
@@ -141,7 +155,7 @@ public class N_Dog1 : MonoBehaviour
     void Wander()
     {
         if (isRunning)
-        {   //戻るとき
+        {   
 
             // 移動中はアニメON
             isActive = true;
@@ -160,7 +174,8 @@ public class N_Dog1 : MonoBehaviour
             {
                 // 帰還完了
                 isRunning = false;
-
+                //戻るとき
+              
                 // 停止
                 rbody.linearVelocity = Vector2.zero;
 
@@ -238,6 +253,13 @@ public class N_Dog1 : MonoBehaviour
         {
             rbody.linearVelocity = Vector2.zero;
             animator.SetBool("Sleep", isSleep);
+            // +++サウンド停止
+            AudioSource soundPlayer = GetComponent<AudioSource>();
+            if (soundPlayer != null)
+            {
+                //サウンドストップ
+                soundPlayer.Stop();
+            }
             return ;
         }
     }
