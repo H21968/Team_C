@@ -59,7 +59,7 @@ public class N_Human_Behavior : MonoBehaviour
                 if (isbgm == true)
                 {
                     // +++ƒTƒEƒ“ƒh
-                    N_SoundManager.N_Instance.N_Play_BGM("Maou_bgm_neorock54");
+                    N_SoundManager.N_Instance.N_Play_BGM("maou_bgm_neorock54");
                     isbgm = false;
                 }
                 Human_isActive = true;
