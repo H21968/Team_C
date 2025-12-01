@@ -20,6 +20,8 @@ public class N_Human_Behavior : MonoBehaviour
     bool isRunning = false;       //戻るフラグ
     public float Human1_damage = 1;//プレイヤーに与えるダメージ量
 
+    bool isbgm = false;//人間停止
+
     float TargetReachDistance = 0.3f;   // 目的地に到達したとみなす距離
     float WanderMoveDuration = 1.5f;    // 動き続ける最大時間
 
@@ -34,6 +36,7 @@ public class N_Human_Behavior : MonoBehaviour
         Move_restriction = transform.position;//出現位置を記録
 
         SetNewTarget();//最初に向かう位置
+        isbgm = true;
     }
 
     // Update is called once per frame
@@ -52,6 +55,13 @@ public class N_Human_Behavior : MonoBehaviour
             float dist = Vector2.Distance(transform.position, player.transform.position);
             if (dist < Human_rectionDistance)
             {
+                
+                if (isbgm == true)
+                {
+                    // +++サウンド
+                    N_SoundManager.N_Instance.N_Play_BGM("BGM_boss");
+                    isbgm = false;
+                }
                 Human_isActive = true;
                isActive = true; //アクティブにする
                 animator.SetBool("isActive", isActive);
@@ -124,6 +134,7 @@ public class N_Human_Behavior : MonoBehaviour
                 isRunning = false;
                 // 停止
                 rbody.linearVelocity = Vector2.zero;
+                N_BGM();
                 isActive = false;
                 animator.SetBool("isActive", false);
                 // 次のうろつき目標を設定
@@ -208,5 +219,11 @@ public class N_Human_Behavior : MonoBehaviour
             Distinct2 = 1;
         }
         animator.SetInteger("Distinct", Distinct2);
+    }
+    void N_BGM()
+    {
+        // +++サウンド停止
+        N_SoundManager.N_Instance.N_BGM_Stop();
+        isbgm = true;
     }
 }

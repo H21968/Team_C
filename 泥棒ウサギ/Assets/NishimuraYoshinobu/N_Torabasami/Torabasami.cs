@@ -22,8 +22,6 @@ public class Torabasami : MonoBehaviour//クラス
     bool isActive = false;//アクティブフラグ
     public int arrangeId = 0;//配置の識別に使う
 
-    // +++ サウンド追加
-    public AudioClip meBOSS_Sound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,14 +73,7 @@ public class Torabasami : MonoBehaviour//クラス
                 Debug.Log("プレイヤーがダメージを受ける");
                 // +++サウンド
                 AudioSource soundPlayer = GetComponent<AudioSource>();
-                if (soundPlayer != null)
-                {
-                    //サウンドを止める
-                    soundPlayer.Stop();
-
-                    //サウンドを鳴らす
-                    soundPlayer.PlayOneShot(meBOSS_Sound);
-                }
+              
 
                 if (GameStatus.player_hp <= 0)
                    
