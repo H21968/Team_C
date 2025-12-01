@@ -29,6 +29,9 @@ public class FClearHatake2 : MonoBehaviour
         {
             GameStatus.active_task = false;
             Invoke("InactiveImage", 0.3f);
+
+            //SE再生
+            FSoundManager.soundManager.SEPlay(SEType.ZKey);
         }
 
 
@@ -48,6 +51,10 @@ public class FClearHatake2 : MonoBehaviour
             mainImage.SetActive(true);      //画像を表示する
 
             mainImage.GetComponent<Image>().sprite = gameClearSpr;    //画像を設定する
+
+
+            //SE再生
+            FSoundManager.soundManager.SEPlay(SEType.GameClear);
         }
         //ゲームオーバーになった時
         else if (PlayerControll.gameState == "gameover")
@@ -55,6 +62,10 @@ public class FClearHatake2 : MonoBehaviour
             mainImage.SetActive(true);      //画像を表示する
 
             mainImage.GetComponent<Image>().sprite = gameOverSpr;    //画像を設定する
+
+
+            //SE再生
+            FSoundManager.soundManager.SEPlay(SEType.GameOver);
         }
 
         else if (PlayerControll.gameState == "playing")

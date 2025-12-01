@@ -36,6 +36,10 @@ public class FZkeySystem : MonoBehaviour
                     // Button以外でもSubmitイベントを送る方法
                     ExecuteEvents.Execute(nowObj, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
                 }
+
+                //SE再生
+                FSoundManager.soundManager.SEPlay(SEType.ZKey);
+
             }
         }
     }

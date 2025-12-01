@@ -19,6 +19,9 @@ public class FTitleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             SceneManager.LoadScene(sceneName);
+
+            //SEÄ¶
+            FSoundManager.soundManager.SEPlay(SEType.ZKey);
         }
     }
 

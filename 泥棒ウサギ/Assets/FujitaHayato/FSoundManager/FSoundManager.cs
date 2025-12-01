@@ -5,23 +5,27 @@ public enum BGMType
 {
     None,   //なし
     Title,  //タイトル
-    InGame, //ゲーム中
-    InBoss, //ボス線
+    InHatake,   //畑ステージ
+    InMise,     //店ステージ
+    InDakuto,   //地下BGM
 }
 //SEタイプ
 public enum SEType
 {
     GameClear,  //ゲームクリア
     GameOver,   //ゲームオーバー
+    ZKey,       //Zキーを押したとき
 }
 
 public class FSoundManager : MonoBehaviour
 {
     public AudioClip bgmInTitle;    //タイトルBGM
-    public AudioClip bgmInGame;     //ゲーム中
-    public AudioClip bgmInBoss;     //ボス線BGM
+    public AudioClip bgmInHatake;   //畑ステージBGM
+    public AudioClip bgmInMise;     //店ステージBGM
+    public AudioClip bgmInDakuto;   //地下BGM
     public AudioClip meGameClear;   //ゲームクリア
     public AudioClip meGameOver;    //ゲームオーバー
+    public AudioClip seZKey;        //Zキーを押した時
 
     public static FSoundManager soundManager;   //最初のSoundManagerを保存する変数
 
@@ -65,14 +69,19 @@ public class FSoundManager : MonoBehaviour
             {
                 audio.clip = bgmInTitle;    //タイトル
             }
-            else if (type == BGMType.InGame)
+            else if (type == BGMType.InHatake)
             {
-                audio.clip = bgmInGame;    //ゲーム中
+                audio.clip = bgmInHatake;    //畑ステージ
             }
-            else if (type == BGMType.InBoss)
+            else if (type == BGMType.InMise)
             {
-                audio.clip = bgmInBoss;    //ゲーム中
+                audio.clip = bgmInMise;    //店ステージ
             }
+            else if (type == BGMType.InDakuto)
+            {
+                audio.clip = bgmInDakuto;    //地下BGM
+            }
+      
             audio.Play();
         }
     }
@@ -93,6 +102,10 @@ public class FSoundManager : MonoBehaviour
         else if (type == SEType.GameOver)
         {
             GetComponent<AudioSource>().PlayOneShot(meGameOver);   //ゲームクリア
+        }
+        else if (type == SEType.ZKey)
+        {
+            GetComponent<AudioSource>().PlayOneShot(seZKey);   //Zキー押した時
         }
     }
 
