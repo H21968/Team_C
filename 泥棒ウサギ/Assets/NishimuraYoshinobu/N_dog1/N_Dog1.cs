@@ -68,7 +68,7 @@ public class N_Dog1 : MonoBehaviour
                 if (dist < Human_rectionDistance)
                 {
                     // +++ƒTƒEƒ“ƒh
-                    N_SoundManager.N_Instance.N_Play_BGM("BGM_boss");
+                    //N_SoundManager.N_Instance.N_Play_BGM("BGM_boss");
                     
                     isSleep = false;
                     animator.SetBool("Sleep", isSleep);
