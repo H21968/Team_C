@@ -38,6 +38,9 @@ public class PlayerControll : MonoBehaviour
     public float destroy_vector_y = 5;  //プレイヤー破壊前に付与されるY軸ベクトル
     public float zero_speed = 0;         //プレイヤーの移動停止
 
+    // +++ サウンド追加
+    public AudioClip Player_Sound_Item_Get;   //アイテムに触れたときのSE
+    public AudioClip Player_Sound_Enemy_Touch;//敵に触れたときのSE
     // p1からp2の角度を返す
     float GetAngle(Vector2 p1, Vector2 p2)
     {
@@ -194,22 +197,25 @@ public class PlayerControll : MonoBehaviour
         {
             ItemGet(collision.gameObject);          //何もなし
             Destroy(collision.gameObject);
-          
+            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
         }
         if (collision.gameObject.tag == "SpeedUP")
         {
             ItemGetSpeedUP(collision.gameObject);   //スピードアップ
             Destroy(collision.gameObject);
+            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
         }
         if (collision.gameObject.tag == "SpeedDown")
         {
             ItemGetSpeedDown(collision.gameObject); //スピードダウン
             Destroy(collision.gameObject);
+            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
         }
         if (collision.gameObject.tag == "ItemHpUP")
         {
             ItemGetHP(collision.gameObject);   //HP回復
             Destroy(collision.gameObject);
+            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
         }
 
 
@@ -239,7 +245,7 @@ public class PlayerControll : MonoBehaviour
         if (gameState == "playing")
         {
             player_hp--; //HPを減らす
-
+            Touch_Sound_Enemy();//ダメージサウンド
             if (player_hp > 0)
             {
                 //ダメージフラグ ON
@@ -403,5 +409,31 @@ public class PlayerControll : MonoBehaviour
 
         // アイテムを消す
         Destroy(item);
+    }
+    void Touch_Sound_Item()
+    {
+        // +++サウンド
+        AudioSource soundPlayer = GetComponent<AudioSource>();
+        if (soundPlayer != null)
+        {
+            //サウンドを止める
+            soundPlayer.Stop();
+
+            //サウンドを鳴らす
+            soundPlayer.PlayOneShot(Player_Sound_Item_Get);
+        }
+    }
+
+    void Touch_Sound_Enemy()
+    {
+        AudioSource soundPlayer = GetComponent<AudioSource>();
+        if (soundPlayer != null)
+        {
+            //サウンドを止める
+            soundPlayer.Stop();
+
+            //サウンドを鳴らす
+            soundPlayer.PlayOneShot(Player_Sound_Enemy_Touch);
+        }
     }
 }
