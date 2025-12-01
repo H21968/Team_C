@@ -12,6 +12,7 @@ public static class GameStatus
     public static int player_hp = 3;
     public static float speed = 3.0f;
     public static bool active_task = true;
+    //public static bool player_spawn = true;
 }
 
 

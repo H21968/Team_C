@@ -17,8 +17,8 @@ public class FClearManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-            ////画像を非表示にする
-            //Invoke("InactiveImage", 1.0f);
+        if (GameStatus.active_task == false)
+            mainImage.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,6 +27,7 @@ public class FClearManager : MonoBehaviour
         // Zキーで画像を非表示（1秒後）
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            GameStatus.active_task = false;
             Invoke("InactiveImage", 0.3f);
         }
 
@@ -35,7 +36,7 @@ public class FClearManager : MonoBehaviour
         //最初ufoを非表示にする用
         ufo.SetActive(false);
         //きゅうりの数が１の時ufoが現れる用
-        if(ItemKeeper.haskyuuri>=2&&ItemKeeper.hasnakama>=1)
+        if(ItemKeeper.haskyuuri>=3&&ItemKeeper.hasnakama>=1)
         {
             ufo.SetActive(true);    //ufoが出てくる
         }
