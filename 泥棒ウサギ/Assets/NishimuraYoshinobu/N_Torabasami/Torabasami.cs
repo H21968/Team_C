@@ -22,6 +22,8 @@ public class Torabasami : MonoBehaviour//クラス
     bool isActive = false;//アクティブフラグ
     public int arrangeId = 0;//配置の識別に使う
 
+    // +++ サウンド追加
+    //public AudioClip Trap_sound;   //トラばさみが閉じたのSE
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -94,7 +96,7 @@ public class Torabasami : MonoBehaviour//クラス
         if(torabasami_hp <= 0)
         {
 
-
+            //Touch_Sound_Torabasami();
             Anime_Close = true;
             animator.SetBool("Anime_int", Anime_Close);
            
@@ -106,4 +108,17 @@ public class Torabasami : MonoBehaviour//クラス
             Destroy(gameObject, 0.5f);
         }
     }
+    //void Touch_Sound_Torabasami()
+    //{
+    //    // +++サウンド
+    //    AudioSource soundPlayer = GetComponent<AudioSource>();
+    //    if (soundPlayer != null)
+    //    {
+    //        //サウンドを止める
+    //        soundPlayer.Stop();
+
+    //        //サウンドを鳴らす
+    //        soundPlayer.PlayOneShot(Trap_sound);
+    //    }
+    //}
 }

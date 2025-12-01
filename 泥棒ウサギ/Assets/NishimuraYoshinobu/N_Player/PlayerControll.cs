@@ -40,8 +40,9 @@ public class PlayerControll : MonoBehaviour
     public float zero_speed = 0;         //プレイヤーの移動停止
 
     // +++ サウンド追加
-    public AudioClip Player_Sound_Item_Get;   //アイテムに触れたときのSE
-    public AudioClip Player_Sound_Enemy_Touch;//敵に触れたときのSE
+    public AudioClip Player_Sound_Item_Get;          //アイテムに触れたときのSE
+    public AudioClip Player_Sound_Item_Speed_Dwen;   //アイテムに触れたときのSE
+    public AudioClip Player_Sound_Enemy_Touch;       //敵に触れたときのSE
     // p1からp2の角度を返す
     float GetAngle(Vector2 p1, Vector2 p2)
     {
