@@ -28,6 +28,8 @@ public class N_Human_Behavior : MonoBehaviour
     Vector3 target_Position;//ランダム移動目的地
     Vector3 Move_restriction;//移動制限
 
+    public AudioClip Player_Sound_Enemy_Approach;       //敵に接近した時のBGM
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,7 +61,7 @@ public class N_Human_Behavior : MonoBehaviour
                 if (isbgm == true)
                 {
                     // +++サウンド
-                    //N_SoundManager.N_Instance.N_Play_BGM("BGM_boss");
+                    //N_SoundManager.N_Instance.N_Play_BGM(Player_Sound_Enemy_Approach);
                     isbgm = false;
                 }
                 Human_isActive = true;

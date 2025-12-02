@@ -32,6 +32,8 @@ public class N_Dog1 : MonoBehaviour
     Vector3 target_Position;//ランダム移動目的地
     Vector3 Move_restriction;//移動制限
 
+    public AudioClip Player_Sound_Enemy_Approach;       //敵に接近した時のBGM
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,7 +70,7 @@ public class N_Dog1 : MonoBehaviour
                 if (dist < Human_rectionDistance)
                 {
                     // +++サウンド
-                    //N_SoundManager.N_Instance.N_Play_BGM("BGM_boss");
+                    //N_SoundManager.N_Instance.N_Play_BGM(Player_Sound_Enemy_Approach);
                     
                     isSleep = false;
                     animator.SetBool("Sleep", isSleep);

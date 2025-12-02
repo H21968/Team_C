@@ -19,13 +19,15 @@ public class N_SoundManager : MonoBehaviour
             Destroy(gameObject);            //重複して BGM が二重再生されるのを防ぐ
         }
     }
-    public void N_Play_BGM(string BGM_Name)
+    public void N_Play_BGM(AudioClip clip)
     {
-        // BGM_Clipから名前が一致する BGM を探す
-        AudioClip clip = System.Array.Find(BGM_Clip, c => c.name == BGM_Name);
         //何もしない
         if (clip == null)
+        {
+            Debug.LogWarning("N_Play_BGM が呼ばれたけど、AudioClip が NULL です。BGM は再生しません。");
+            N_BGM_Stop();  //BGMを止めておく
             return;
+        }
         // すでに同じ曲を再生中なら再生しない
         if (BGM_Source.clip == clip && BGM_Source.isPlaying)
         {
