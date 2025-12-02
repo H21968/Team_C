@@ -2225,6 +2225,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2108595626}
+    - target: {fileID: 4500653577404186602, guid: fdb514553f7407146bec9e073d9eca88, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4593655501323867396, guid: fdb514553f7407146bec9e073d9eca88, type: 3}
       propertyPath: m_Name
       value: FEndMenu
