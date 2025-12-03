@@ -41,7 +41,9 @@ public class PlayerControll : MonoBehaviour
 
     // +++ サウンド追加
     public AudioClip Player_Sound_Item_Get;          //アイテムに触れたときのSE
-    public AudioClip Player_Sound_Item_Speed_Dwen;   //アイテムに触れたときのSE
+    public AudioClip Player_Sound_Item_Speed_Down;   //アイテムに触れたときのSE
+    public AudioClip Player_Sound_Item_Speed_UP;     //アイテムに触れたときのSE
+    public AudioClip Player_Sound_Item_HP_UP;        //アイテムに触れたときのSE
     public AudioClip Player_Sound_Enemy_Touch;       //敵に触れたときのSE
     // p1からp2の角度を返す
     float GetAngle(Vector2 p1, Vector2 p2)
@@ -205,19 +207,19 @@ public class PlayerControll : MonoBehaviour
         {
             ItemGetSpeedUP(collision.gameObject);   //スピードアップ
             Destroy(collision.gameObject);
-            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
+            Touch_Sound_Item_Speed_UP();                     //アイテムに触れたときSEを再生
         }
         if (collision.gameObject.tag == "SpeedDown")
         {
             ItemGetSpeedDown(collision.gameObject); //スピードダウン
             Destroy(collision.gameObject);
-            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
+            Touch_Sound_Item_Speed_Dwen();                     //アイテムに触れたときSEを再生
         }
         if (collision.gameObject.tag == "ItemHpUP")
         {
             ItemGetHP(collision.gameObject);   //HP回復
             Destroy(collision.gameObject);
-            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
+            Touch_Sound_Item_HP_UP();                     //アイテムに触れたときSEを再生
         }
 
 
@@ -247,6 +249,7 @@ public class PlayerControll : MonoBehaviour
         if (gameState == "playing")
         {
             player_hp--; //HPを減らす
+            GameStatus.player_hp = player_hp;
             Touch_Sound_Enemy();//ダメージサウンド
             if (player_hp > 0)
             {
@@ -344,7 +347,8 @@ public class PlayerControll : MonoBehaviour
     {
    // HP UP
     player_hp += 1;
-    Debug.Log("HP UP! 現在のHP：" + player_hp);
+        GameStatus.player_hp = player_hp;
+        Debug.Log("HP UP! 現在のHP：" + player_hp);
 
     // アイテムID取得
     FItemID itemData = item.GetComponent<FItemID>();
@@ -436,6 +440,42 @@ public class PlayerControll : MonoBehaviour
 
             //サウンドを鳴らす
             soundPlayer.PlayOneShot(Player_Sound_Enemy_Touch);
+        }
+    }
+    void Touch_Sound_Item_Speed_UP()
+    {
+        AudioSource soundPlayer = GetComponent<AudioSource>();
+        if (soundPlayer != null)
+        {
+            //サウンドを止める
+            soundPlayer.Stop();
+
+            //サウンドを鳴らす
+            soundPlayer.PlayOneShot(Player_Sound_Item_Speed_UP);
+        }
+    }
+    void Touch_Sound_Item_Speed_Dwen()
+    {
+        AudioSource soundPlayer = GetComponent<AudioSource>();
+        if (soundPlayer != null)
+        {
+            //サウンドを止める
+            soundPlayer.Stop();
+
+            //サウンドを鳴らす
+            soundPlayer.PlayOneShot(Player_Sound_Item_Speed_Down);
+        }
+    }
+    void Touch_Sound_Item_HP_UP()
+    {
+        AudioSource soundPlayer = GetComponent<AudioSource>();
+        if (soundPlayer != null)
+        {
+            //サウンドを止める
+            soundPlayer.Stop();
+
+            //サウンドを鳴らす
+            soundPlayer.PlayOneShot(Player_Sound_Item_HP_UP);
         }
     }
 }

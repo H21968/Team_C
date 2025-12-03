@@ -61,7 +61,7 @@ public class N_Human_Behavior : MonoBehaviour
                 if (isbgm == true)
                 {
                     // +++ƒTƒEƒ“ƒh
-                    //N_SoundManager.N_Instance.N_Play_BGM(Player_Sound_Enemy_Approach);
+                    N_SoundManager.N_Instance.N_Play_BGM(Player_Sound_Enemy_Approach);
                     isbgm = false;
                 }
                 Human_isActive = true;
