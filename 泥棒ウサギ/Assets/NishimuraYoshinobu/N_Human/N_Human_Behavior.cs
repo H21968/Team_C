@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 //using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class N_Human_Behavior : MonoBehaviour
 {
     public float Human_speed = 2.2f;//速度
@@ -33,6 +34,7 @@ public class N_Human_Behavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        transform.SetParent(null);
         rbody = GetComponent<Rigidbody2D>(); // Rigid body2Dを得る
         animator = GetComponent<Animator>(); // Animatorを得る
         Move_restriction = transform.position;//出現位置を記録
@@ -227,5 +229,19 @@ public class N_Human_Behavior : MonoBehaviour
         // +++サウンド停止
         N_SoundManager.N_Instance.N_BGM_Stop();
         isbgm = true;
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Destroy(gameObject);  // シーン切替時に必ず破壊する
     }
 }

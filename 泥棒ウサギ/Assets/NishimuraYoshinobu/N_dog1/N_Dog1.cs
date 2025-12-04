@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 //using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class N_Dog1 : MonoBehaviour
@@ -278,5 +279,19 @@ public class N_Dog1 : MonoBehaviour
             Distinct2 = 1;
         }
         animator.SetInteger("Distinct", Distinct2);
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Destroy(gameObject);  // ÉVÅ[Éìêÿë÷éûÇ…ïKÇ∏îjâÛÇ∑ÇÈ
     }
 }
