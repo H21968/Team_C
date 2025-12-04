@@ -199,9 +199,10 @@ public class PlayerControll : MonoBehaviour
 
         if (collision.gameObject.tag == "Item")//アイテムに触れた場合の判定
         {
+           
             ItemGet(collision.gameObject);          //何もなし
             Destroy(collision.gameObject);
-            Touch_Sound_Item();                     //アイテムに触れたときSEを再生
+            Touch_Sound_Item();      //アイテムに触れたときSEを再生
         }
         if (collision.gameObject.tag == "SpeedUP")
         {
