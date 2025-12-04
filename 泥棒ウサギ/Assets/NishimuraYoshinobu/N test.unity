@@ -2863,11 +2863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2416918013970289184, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.090368
+      value: 4.458555
       objectReference: {fileID: 0}
     - target: {fileID: 2416918013970289184, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.96620226
+      value: -1.5396965
       objectReference: {fileID: 0}
     - target: {fileID: 2416918013970289184, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2901,7 +2901,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7533197928288117642, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693623707673638076, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7693623707673638076, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
+    - {fileID: 7533197928288117642, guid: 7628475ddf737c54e98d83096643d5c7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3068,11 +3078,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2797070566945005402, guid: dde852c9742129d468ac44a6910b9dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994724923614747635, guid: dde852c9742129d468ac44a6910b9dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3758960701245309939, guid: dde852c9742129d468ac44a6910b9dcf, type: 3}
       propertyPath: m_Name
       value: N_dog_2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2797070566945005402, guid: dde852c9742129d468ac44a6910b9dcf, type: 3}
+    - {fileID: 2994724923614747635, guid: dde852c9742129d468ac44a6910b9dcf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
