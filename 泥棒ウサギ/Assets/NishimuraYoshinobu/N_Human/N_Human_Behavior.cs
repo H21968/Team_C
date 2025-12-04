@@ -34,7 +34,6 @@ public class N_Human_Behavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       // transform.SetParent(null);
         rbody = GetComponent<Rigidbody2D>(); // Rigid body2Dを得る
         animator = GetComponent<Animator>(); // Animatorを得る
         Move_restriction = transform.position;//出現位置を記録
@@ -63,8 +62,7 @@ public class N_Human_Behavior : MonoBehaviour
                 if (isbgm == true)
                 {
                     // +++サウンド
-                    //N_SoundManager.N_Instance.N_Play_BGM(Player_Sound_Enemy_Approach);
-                    isbgm = false;
+                     isbgm = false;
                 }
                 Human_isActive = true;
                isActive = true; //アクティブにする
@@ -227,21 +225,7 @@ public class N_Human_Behavior : MonoBehaviour
     void N_BGM()
     {
         // +++サウンド停止
-       //N_SoundManager.N_Instance.N_BGM_Stop();
         isbgm = true;
     }
-    //void OnEnable()
-    //{
-    //    SceneManager.sceneLoaded += OnSceneLoaded;
-    //}
-
-    //void OnDisable()
-    //{
-    //    SceneManager.sceneLoaded -= OnSceneLoaded;
-    //}
-
-    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    Destroy(gameObject);  // シーン切替時に必ず破壊する
-    //}
+   
 }

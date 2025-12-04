@@ -71,8 +71,7 @@ public class N_Dog1 : MonoBehaviour
                 if (dist < Human_rectionDistance)
                 {
                     // +++サウンド
-                    //N_SoundManager.N_Instance.N_Play_BGM(Player_Sound_Enemy_Approach);
-                    
+                   
                     isSleep = false;
                     animator.SetBool("Sleep", isSleep);
                     return;
@@ -247,7 +246,7 @@ public class N_Dog1 : MonoBehaviour
             rbody.linearVelocity = Vector2.zero;
             animator.SetBool("Sleep", isSleep);
             // +++サウンド停止
-           // N_SoundManager.N_Instance.N_BGM_Stop();
+         
             return ;
         }
     }
@@ -280,18 +279,5 @@ public class N_Dog1 : MonoBehaviour
         }
         animator.SetInteger("Distinct", Distinct2);
     }
-    //void OnEnable()
-    //{
-    //    SceneManager.sceneLoaded += OnSceneLoaded;
-    //}
-
-    //void OnDisable()
-    //{
-    //    SceneManager.sceneLoaded -= OnSceneLoaded;
-    //}
-
-    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    Destroy(gameObject);  // シーン切替時に必ず破壊する
-    //}
+   
 }

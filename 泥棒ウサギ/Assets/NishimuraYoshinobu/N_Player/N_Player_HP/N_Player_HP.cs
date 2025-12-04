@@ -18,7 +18,7 @@ public class N_Player_HP : MonoBehaviour
     void Update()
     {
         GameObject player = GameObject.FindGameObjectWithTag("player");
-        if (GameStatus.player_hp == 3)
+        if (GameStatus.player_hp >= 3)
         {
             HP = 3;
             Debug.Log(HP);
