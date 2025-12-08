@@ -230,7 +230,7 @@ public class PlayerControll : MonoBehaviour
         }
         if (collision.gameObject.tag == "Untagged")
         {
-            Touch_Sound_Item();
+            //Touch_Sound_Item();
         }
     }
 
@@ -420,7 +420,7 @@ public class PlayerControll : MonoBehaviour
         // アイテムを消す
         Destroy(item);
     }
-    void Touch_Sound_Item()
+    public void Touch_Sound_Item()
     {
         // +++サウンド
         AudioSource soundPlayer = GetComponent<AudioSource>();
