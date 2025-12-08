@@ -49,7 +49,7 @@ public class Torabasami : MonoBehaviour//ƒNƒ‰ƒX
 
                 if (isActive && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
                 {
-                    TakeDamage(10);
+                    //TakeDamage(10);
                 }
             }
         }
