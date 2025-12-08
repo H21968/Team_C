@@ -15,12 +15,8 @@ public static class GameStatus
     //public static bool player_spawn = true;
 }
 
-
-
 public class PlayerControll : MonoBehaviour
 {
-
-
     public float speed = 3.0f;    // 移動スピード
     int direction = 0;            // 移動方向
     float axisH;                  // 横軸
@@ -28,8 +24,7 @@ public class PlayerControll : MonoBehaviour
     public float angleZ = -90.0f; // 回転角度 プレイヤーの向き
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
-    //bool isMoving = false;        // 移動中フラグ
-
+    bool isMoving = false;        // 移動中フラグ
 
     public int player_hp = 3;           //Player HP
     public static string gameState;     //gameの状態
@@ -45,6 +40,7 @@ public class PlayerControll : MonoBehaviour
     public AudioClip Player_Sound_Item_Speed_UP;     //アイテムに触れたときのSE
     public AudioClip Player_Sound_Item_HP_UP;        //アイテムに触れたときのSE
     public AudioClip Player_Sound_Enemy_Touch;       //敵に触れたときのSE
+    public AudioClip Player_Sound_MOVE;       //動く時のSE
     // p1からp2の角度を返す
     float GetAngle(Vector2 p1, Vector2 p2)
     {
@@ -69,8 +65,6 @@ public class PlayerControll : MonoBehaviour
         }
         return angle;
     }
-
-  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -101,9 +95,15 @@ public class PlayerControll : MonoBehaviour
         }
             axisH = Input.GetAxisRaw("Horizontal");  // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
-     
+
+        isMoving = axisH != 0 || axisV != 0;
         animator.SetBool("IsMoving", axisH != 0 || axisV != 0);
-      
+
+        if (isMoving)
+        {
+            Player_Sound_Moving();
+        }
+       
         //キー入力から移動角度を求める
         Vector2 fromPt = transform.position;
         Vector2 toPt = new Vector2(fromPt.x + axisH, fromPt.y + axisV);
@@ -202,27 +202,22 @@ public class PlayerControll : MonoBehaviour
            
             ItemGet(collision.gameObject);          //何もなし
             Destroy(collision.gameObject);
-            Touch_Sound_Item();      //アイテムに触れたときSEを再生
-        }
+         }
         if (collision.gameObject.tag == "SpeedUP")
         {
             ItemGetSpeedUP(collision.gameObject);   //スピードアップ
-            Destroy(collision.gameObject);
-            Touch_Sound_Item_Speed_UP();                     //アイテムに触れたときSEを再生
-        }
+           Destroy(collision.gameObject);
+         }
         if (collision.gameObject.tag == "SpeedDown")
         {
             ItemGetSpeedDown(collision.gameObject); //スピードダウン
             Destroy(collision.gameObject);
-            Touch_Sound_Item_Speed_Dwen();                     //アイテムに触れたときSEを再生
-        }
+       }
         if (collision.gameObject.tag == "ItemHpUP")
         {
             ItemGetHP(collision.gameObject);   //HP回復
             Destroy(collision.gameObject);
-            Touch_Sound_Item_HP_UP();                     //アイテムに触れたときSEを再生
-        }
-
+         }
 
         if (collision.gameObject.tag == "Clear")//クリアに触れた場合の判定
         {
@@ -232,6 +227,10 @@ public class PlayerControll : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")//敵に触れた場合のダメージ判定
         {
             GetDamage(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Untagged")
+        {
+            Touch_Sound_Item();
         }
     }
 
@@ -321,6 +320,7 @@ public class PlayerControll : MonoBehaviour
     public void ItemGet(GameObject item)
     {
         // itemを取った 処理
+        Touch_Sound_Item();      //アイテムに触れたときSEを再生
         Debug.Log("アイテムを取った");
 
         // FItemID を取得
@@ -335,6 +335,7 @@ public class PlayerControll : MonoBehaviour
         FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
         inventory.AddItem(itemData.itemId);
 
+
         // アイテムを消す
         Destroy(item);
 
@@ -348,6 +349,7 @@ public class PlayerControll : MonoBehaviour
     {
    // HP UP
     player_hp += 1;
+        Touch_Sound_Item_HP_UP();                     //アイテムに触れたときSEを再生
         GameStatus.player_hp = player_hp;
         Debug.Log("HP UP! 現在のHP：" + player_hp);
 
@@ -378,7 +380,7 @@ public class PlayerControll : MonoBehaviour
         // Speed UP 処理
         speed += 1;
         Debug.Log("Speed UP! 現在のスピード：" + speed);
-
+        Touch_Sound_Item_Speed_UP();                     //アイテムに触れたときSEを再生
         // FItemID を取得
         FItemID itemData = item.GetComponent<FItemID>();
         if (itemData == null)
@@ -400,6 +402,7 @@ public class PlayerControll : MonoBehaviour
     {
         // Speed UP 処理
         speed -= 1;
+        Touch_Sound_Item_Speed_Down();                     //アイテムに触れたときSEを再生
         Debug.Log("Speed DOWN! 現在のスピード：" + speed);
 
         // FItemID を取得
@@ -455,7 +458,7 @@ public class PlayerControll : MonoBehaviour
             soundPlayer.PlayOneShot(Player_Sound_Item_Speed_UP);
         }
     }
-    void Touch_Sound_Item_Speed_Dwen()
+    void Touch_Sound_Item_Speed_Down()
     {
         AudioSource soundPlayer = GetComponent<AudioSource>();
         if (soundPlayer != null)
@@ -479,4 +482,18 @@ public class PlayerControll : MonoBehaviour
             soundPlayer.PlayOneShot(Player_Sound_Item_HP_UP);
         }
     }
+    void Player_Sound_Moving()
+    {
+        AudioSource soundPlayer = GetComponent<AudioSource>();
+        if (soundPlayer != null)
+        {
+            if (!soundPlayer.isPlaying)// 再生中でなければ鳴らす
+            {
+                //サウンドを鳴らす
+                soundPlayer.PlayOneShot(Player_Sound_MOVE);
+            }
+                                     
+        }
+    }
+  
 }
