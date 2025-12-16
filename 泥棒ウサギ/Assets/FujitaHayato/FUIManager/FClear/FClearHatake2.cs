@@ -52,6 +52,31 @@ public class FClearHatake2 : MonoBehaviour
 
             mainImage.GetComponent<Image>().sprite = gameClearSpr;    //画像を設定する
 
+            //StageClearManagerをtureにした
+            StageClearManager.hatake2 = true;
+
+            //ステージクリアしてるか用
+            if (StageClearManager.hatake1 == true)
+            {
+                StageClearManager.stage1 = true;
+
+                if (StageClearManager.hatake2 == true)
+                {
+                    StageClearManager.stage2 = true;
+
+                    if (StageClearManager.mise1 == true)
+                    {
+                        StageClearManager.stage3 = true;
+
+                        if (StageClearManager.mise2 == true)
+                        {
+                            StageClearManager.stage4 = true;
+
+                            StageClearManager.allclear = true;
+                        }
+                    }
+                }
+            }
 
             //SE再生
             FSoundManager.soundManager.SEPlay(SEType.GameClear);
