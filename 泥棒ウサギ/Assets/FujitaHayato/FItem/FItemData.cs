@@ -81,11 +81,15 @@ public class FItemData : MonoBehaviour
             {
                 //Œ®
                 ItemKeeper.haskagi += count;
+                PlayerControll player = GameObject.FindWithTag("player").GetComponent<PlayerControll>();
+                player.Touch_Sound_Item();
             }
             if (type == ItemType.nakama)
             {
                 //’‡ŠÔ
                 ItemKeeper.hasnakama += count;
+                PlayerControll player = GameObject.FindWithTag("player").GetComponent<PlayerControll>();
+                player.Touch_Sound_Item();
             }
 
             gameObject.GetComponent<CircleCollider2D>().isTrigger = false;

@@ -77,6 +77,8 @@ public class N_Human_Behavior : MonoBehaviour
                 float rad = Mathf.Atan2(dir.y, dir.x);
                 float angle = rad * Mathf.Rad2Deg;
 
+                angle = Mathf.Round(angle);
+
                 //移動角度でアニメーションを変更する
                 int Distinct;
                 if (angle >= -45 && angle < 45)
