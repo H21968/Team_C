@@ -57,6 +57,8 @@ public class PlayerControll : MonoBehaviour
             float rad = Mathf.Atan2(dy, dx);
             //ラジアンを度に変換して返す
             angle = rad * Mathf.Rad2Deg;
+
+            angle = Mathf.Round(angle);
         }
         else
         {
@@ -110,10 +112,10 @@ public class PlayerControll : MonoBehaviour
         //移動方向から向いている方向とアニメーションを更新
         angleZ = GetAngle(fromPt, toPt);
         int dir= direction;
-       
+
         if (angleZ >= -45 && angleZ < 45)
         {
-           
+
             //右向き
             dir = 3;
         }
@@ -121,9 +123,9 @@ public class PlayerControll : MonoBehaviour
         {
             //上向き
             dir = 2;
-           
+
         }
-         else if (angleZ >= -135 && angleZ <= -45)
+        else if (angleZ >= -135 && angleZ <= -45)
         {
             //下向き
             dir = 0;
@@ -131,21 +133,23 @@ public class PlayerControll : MonoBehaviour
         else
         {
             //左向き
-             dir = 1;
-            
+            dir = 1;
+
         }
+
         if (dir != direction)
         {
             direction = dir;
-           animator.SetInteger("Distinct", direction);
-           
+            animator.SetInteger("Distinct", direction);
+
         }
-       
+
 
         //if(gameState=="gameclear"&&gameState=="gameover")
         //{
 
         //}
+       
     }
 
     void FixedUpdate()

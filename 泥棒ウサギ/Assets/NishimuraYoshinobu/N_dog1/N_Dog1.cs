@@ -64,14 +64,14 @@ public class N_Dog1 : MonoBehaviour
         if (player != null)
         {
             //プレイヤーをの距離チェックとアクティブ化
-           float dist = Vector2.Distance(transform.position, player.transform.position);
+            float dist = Vector2.Distance(transform.position, player.transform.position);
             //プレイヤーが近づけば起きる
             if (isSleep == true)
             {
                 if (dist < Human_rectionDistance)
                 {
                     // +++サウンド
-                   
+
                     isSleep = false;
                     animator.SetBool("Sleep", isSleep);
                     return;
@@ -89,9 +89,9 @@ public class N_Dog1 : MonoBehaviour
                     return;
                 }
             }
-                if (dist < Human_rectionDistance)
+            if (dist < Human_rectionDistance)
             {
-               
+
                 isSleep = false;
                 animator.SetBool("Sleep", isSleep);
                 Dog_isActive = true;
@@ -106,19 +106,21 @@ public class N_Dog1 : MonoBehaviour
                 float rad = Mathf.Atan2(dir.y, dir.x);
                 float angle = rad * Mathf.Rad2Deg;
 
+                angle = Mathf.Round(angle);
+
                 //移動角度でアニメーションを変更する
                 int Distinct;
-                if (angle >= -45 && angle < 45)
+                if (angle >= -45 && angle <= 45)
                 {
                     //右向き
                     Distinct = 3;
                 }
-                else if (angle >= 45 && angle <= 135)
+                else if (angle >= 45 && angle < 135)
                 {
                     //上向き
                     Distinct = 2;
                 }
-                else if (angle >= -135 && angle <= -45)
+                else if (angle >= -135 && angle < -45)
                 {
                     //下向き
                     Distinct = 0;
@@ -143,11 +145,11 @@ public class N_Dog1 : MonoBehaviour
         //うろつき処理
         Wander();
     }
-   
+
     void Wander()
     {
         if (isRunning)
-        {   
+        {
 
             // 移動中はアニメON
             isActive = true;
@@ -158,16 +160,16 @@ public class N_Dog1 : MonoBehaviour
 
             // 元の位置に向けて移動
             rbody.linearVelocity = dir * Dog_speed;
-           
+
             // 移動方向のアニメ更新
             Move_Animation(dir);
-           
+
             if (Vector3.Distance(transform.position, Move_restriction) < 0.5f)
             {
                 // 帰還完了
                 isRunning = false;
                 //戻るとき
-              
+
                 // 停止
                 rbody.linearVelocity = Vector2.zero;
 
@@ -224,14 +226,14 @@ public class N_Dog1 : MonoBehaviour
             Dog_Stop_Timer = Random.Range(0.5f, N_Human_interval);
             // 新ターゲット決定
             SetNewTarget();
-          
+
         }
     }
 
     void SetNewTarget()
     {
-     //ランダム方向生成
-        {   
+        //ランダム方向生成
+        {
             //ランダムな方向を求める、範囲内を動く
             Vector2 randomDirection = Random.insideUnitCircle * wabder_Radius;
             //新しい場所へ
@@ -246,8 +248,10 @@ public class N_Dog1 : MonoBehaviour
             rbody.linearVelocity = Vector2.zero;
             animator.SetBool("Sleep", isSleep);
             // +++サウンド停止
-         
-            return ;
+
+
+
+            return;
         }
     }
     void Move_Animation(Vector2 dir)
@@ -256,12 +260,15 @@ public class N_Dog1 : MonoBehaviour
         float rad = Mathf.Atan2(dir.y, dir.x);
         float angle2 = rad * Mathf.Rad2Deg;
 
+        angle2 = Mathf.Round(angle2);
+
         int Distinct2;
         if (angle2 >= -45 && angle2 < 45)
         {
             //右向き
             Distinct2 = 3;
         }
+
         else if (angle2 >= 45 && angle2 <= 135)
         {
             //上向き
@@ -277,7 +284,8 @@ public class N_Dog1 : MonoBehaviour
             //左向き
             Distinct2 = 1;
         }
+
         animator.SetInteger("Distinct", Distinct2);
     }
-   
+
 }
