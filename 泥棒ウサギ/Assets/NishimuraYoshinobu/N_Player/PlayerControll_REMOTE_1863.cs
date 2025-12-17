@@ -12,17 +12,11 @@ public static class GameStatus
     public static int player_hp = 3;
     public static float speed = 3.0f;
     public static bool active_task = true;
-<<<<<<< HEAD
- 
-    //public static bool player_spawn = true;
-=======
     public static bool player_spawn = true;
->>>>>>> c3728691ad67036c3776c9080f0d486f1216fc16
 }
 
 public class PlayerControll : MonoBehaviour
 {
-    public bool axis = false;
     public float speed = 3.0f;    // 移動スピード
     int direction = 0;            // 移動方向
     float axisH;                  // 横軸
@@ -101,11 +95,9 @@ public class PlayerControll : MonoBehaviour
         {
             return;
         }
-        if (axis == false)
-        {
             axisH = Input.GetAxisRaw("Horizontal");  // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
-        }
+
         isMoving = axisH != 0 || axisV != 0;
         animator.SetBool("IsMoving", axisH != 0 || axisV != 0);
 
@@ -238,10 +230,6 @@ public class PlayerControll : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")//敵に触れた場合のダメージ判定
         {
-            GetDamage2(collision.gameObject);
-        }
-        if (collision.gameObject.tag == "Enemy2")//トラップに触れた場合のダメージ判定
-        {
             GetDamage(collision.gameObject);
         }
         if (collision.gameObject.tag == "Untagged")
@@ -292,38 +280,7 @@ public class PlayerControll : MonoBehaviour
         }
     }
 
-    void GetDamage2(GameObject enemy2)
-    {
-        if (gameState == "playing")
-        {
-            player_hp--; //HPを減らす
-            GameStatus.player_hp = player_hp;
-            Touch_Sound_Enemy();//ダメージサウンド
-            if (player_hp > 0)
-            {
-                //ダメージフラグ ON
-                inDamage = true;
-
-                //移動停止
-                rbody.linearVelocity = Vector2.zero;
-                //敵キャラの反対方向にヒットバックさせる
-                Vector2 hit = (transform.position - enemy2.transform.position).normalized * 4f;
-
-                rbody.linearVelocity = hit;
-
-                axisH = 0;
-                axisV = 0;
-
-                Invoke("DamageEnd", 0.25f);
-            }
-            else
-            {
-                //ゲームオーバー
-                GameOver();
-            }
-        }
-    }
-
+    
     //ダメージ終了
     void DamageEnd()
     {

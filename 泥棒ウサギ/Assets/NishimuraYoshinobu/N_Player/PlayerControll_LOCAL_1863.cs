@@ -12,12 +12,8 @@ public static class GameStatus
     public static int player_hp = 3;
     public static float speed = 3.0f;
     public static bool active_task = true;
-<<<<<<< HEAD
  
     //public static bool player_spawn = true;
-=======
-    public static bool player_spawn = true;
->>>>>>> c3728691ad67036c3776c9080f0d486f1216fc16
 }
 
 public class PlayerControll : MonoBehaviour
