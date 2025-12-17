@@ -12,17 +12,12 @@ public static class GameStatus
     public static int player_hp = 3;
     public static float speed = 3.0f;
     public static bool active_task = true;
-<<<<<<< HEAD
- 
-    //public static bool player_spawn = true;
-=======
     public static bool player_spawn = true;
->>>>>>> c3728691ad67036c3776c9080f0d486f1216fc16
 }
 
 public class PlayerControll : MonoBehaviour
 {
-    public bool axis = false;
+    public static bool axis = false;
     public float speed = 3.0f;    // 移動スピード
     int direction = 0;            // 移動方向
     float axisH;                  // 横軸
@@ -101,7 +96,7 @@ public class PlayerControll : MonoBehaviour
         {
             return;
         }
-        if (axis == false)
+        if (axis == true)
         {
             axisH = Input.GetAxisRaw("Horizontal");  // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
