@@ -87,7 +87,6 @@ public class FClearManager : MonoBehaviour
             mainImage.SetActive(true);      //‰æ‘œ‚ğ•\¦‚·‚é
 
             mainImage.GetComponent<Image>().sprite = gameOverSpr;    //‰æ‘œ‚ğİ’è‚·‚é
-
   
             //SEÄ¶
             FSoundManager.soundManager.SEPlay(SEType.GameOver);
