@@ -61,8 +61,9 @@ public class N_Human_Behavior : MonoBehaviour
                 
                 if (isbgm == true)
                 {
+                  
                     // +++サウンド
-                     isbgm = false;
+                    isbgm = false;
                 }
                 Human_isActive = true;
                isActive = true; //アクティブにする
@@ -111,6 +112,7 @@ public class N_Human_Behavior : MonoBehaviour
                 // 帰還モード開始
                 isRunning = true;
                 animator.SetBool("isActive", false);
+
             }
         }
         //うろつき処理

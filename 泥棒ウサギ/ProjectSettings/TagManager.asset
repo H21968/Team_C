@@ -13,6 +13,7 @@ TagManager:
   - SpeedUP
   - SpeedDown
   - ItemHpUP
+  - Enemy2
   layers:
   - Default
   - TransparentFX

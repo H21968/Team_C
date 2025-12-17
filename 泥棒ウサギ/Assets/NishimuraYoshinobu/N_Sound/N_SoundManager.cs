@@ -2,22 +2,15 @@ using UnityEngine;
 
 public class N_SoundManager : MonoBehaviour
 {
-    public static N_SoundManager N_Instance;
-
     public AudioSource BGM_Source;
-    public AudioClip [] BGM_Clip;
+    public AudioClip enemy_access;          //“G‚ªÚ‹ß‚µ‚Ä‚¢‚é
+
+    public bool isActive = false;
+
 
     private void Awake()
     {
-        if (N_Instance == null)
-        {
-            N_Instance = this;              // ©•ª©g‚ğ—Bˆê‚Ì N_Instance ‚É“o˜^
-            DontDestroyOnLoad(gameObject);  // ƒV[ƒ“‚ğ•Ï‚¦‚Ä‚à”jŠü‚µ‚È‚¢
-        }
-        else
-        {
-            Destroy(gameObject);            //d•¡‚µ‚Ä BGM ‚ª“ñdÄ¶‚³‚ê‚é‚Ì‚ğ–h‚®
-        }
+     
     }
     public void N_Play_BGM(AudioClip clip)
     {
