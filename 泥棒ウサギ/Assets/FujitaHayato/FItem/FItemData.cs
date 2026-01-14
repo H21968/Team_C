@@ -34,8 +34,8 @@ public class FItemData : MonoBehaviour
     {
 
     }
-    //接触
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
@@ -92,18 +92,21 @@ public class FItemData : MonoBehaviour
                 player.Touch_Sound_Item();
             }
 
-            gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
-
             //アイテム取得演出
             //当たりを消す
             //gameObject.GetComponent<CircleCollider2D>().enabled = false;
-            
+
+            Debug.Log("アイテムpop");
             //アイテムのRigidbody2Dを取ってくる
             Rigidbody2D itemBody = GetComponent<Rigidbody2D>();
             //重力を戻す
             itemBody.gravityScale = 2.5f;
             //上に跳ね上げる演出
             itemBody.AddForce(new Vector2(0, 6), ForceMode2D.Impulse);
+
+
+            gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+
             //0.5秒後に削除
             Destroy(gameObject, 0.5f);
 
