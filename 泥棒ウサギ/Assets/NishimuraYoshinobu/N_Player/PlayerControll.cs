@@ -210,27 +210,25 @@ public class PlayerControll : MonoBehaviour
     //接触
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("当たった");
 
         if (collision.gameObject.tag == "Item")//アイテムに触れた場合の判定
         {
            
             ItemGet(collision.gameObject);          //何もなし
-            Destroy(collision.gameObject);
          }
         if (collision.gameObject.tag == "SpeedUP")
         {
+            Debug.Log("にんじん");
             ItemGetSpeedUP(collision.gameObject);   //スピードアップ
-           Destroy(collision.gameObject);
          }
         if (collision.gameObject.tag == "SpeedDown")
         {
             ItemGetSpeedDown(collision.gameObject); //スピードダウン
-            Destroy(collision.gameObject);
        }
         if (collision.gameObject.tag == "ItemHpUP")
         {
             ItemGetHP(collision.gameObject);   //HP回復
-            Destroy(collision.gameObject);
          }
 
         if (collision.gameObject.tag == "Clear")//クリアに触れた場合の判定
@@ -386,8 +384,6 @@ public class PlayerControll : MonoBehaviour
         inventory.AddItem(itemData.itemId);
 
 
-        // アイテムを消す
-        Destroy(item);
 
         // 状態変更など（任意）
         gameState = "itemget";
@@ -415,8 +411,6 @@ public class PlayerControll : MonoBehaviour
     FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
     inventory.AddItem(itemData.itemId);
 
-    // アイテムを消す
-    Destroy(item);
     }
     ////スピードアップ
     //public void ItemGetSpeedUP(GameObject Item)
@@ -444,7 +438,7 @@ public class PlayerControll : MonoBehaviour
         inventory.AddItem(itemData.itemId);
 
         // アイテムを消す
-        Destroy(item);
+        //Destroy(item);
     }
 
     //スピードダウン
@@ -467,8 +461,6 @@ public class PlayerControll : MonoBehaviour
         FPlayerInventory inventory = GameObject.FindWithTag("player").GetComponent<FPlayerInventory>();
         inventory.AddItem(itemData.itemId);
 
-        // アイテムを消す
-        Destroy(item);
     }
     public void Touch_Sound_Item()
     {

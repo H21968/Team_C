@@ -48,6 +48,8 @@ public class FClearHatake2 : MonoBehaviour
         //ゲームクリアした時
         if (PlayerControll.gameState == "gameclear")
         {
+            FRoomManager.doorNumber = 0;
+
             mainImage.SetActive(true);      //画像を表示する
 
             mainImage.GetComponent<Image>().sprite = gameClearSpr;    //画像を設定する
@@ -84,6 +86,8 @@ public class FClearHatake2 : MonoBehaviour
         //ゲームオーバーになった時
         else if (PlayerControll.gameState == "gameover")
         {
+            FRoomManager.doorNumber = 0;
+
             mainImage.SetActive(true);      //画像を表示する
 
             mainImage.GetComponent<Image>().sprite = gameOverSpr;    //画像を設定する
