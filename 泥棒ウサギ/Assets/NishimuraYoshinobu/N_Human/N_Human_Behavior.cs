@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class N_Human_Behavior : MonoBehaviour
 {
+    public static bool Human_axis = false;//人間の移動制限
     public float Human_speed = 2.2f;//速度
     public int N_Human_HP = 2;//HP
     bool Human_isActive = false;//アクティブ
@@ -40,83 +41,97 @@ public class N_Human_Behavior : MonoBehaviour
 
         SetNewTarget();//最初に向かう位置
         isbgm = true;
+        //最初は寝ていて動かない
+        rbody.linearVelocity = Vector2.zero;
+        //Human_axis = false;
+        Human_axis = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 move = Vector2.zero; 
-        //playerのゲームオブジェクトを得る
-        GameObject player = GameObject.FindGameObjectWithTag("player"); 
-        if (player == null)
+        if (Human_axis == true)
         {
-          return; 
-        }
-        if (player != null)
-        {
-            //プレイヤーをの距離チェックとアクティブ化
-            float dist = Vector2.Distance(transform.position, player.transform.position);
-            if (dist < Human_rectionDistance)
+
+            Vector2 move = Vector2.zero;
+            //playerのゲームオブジェクトを得る
+            GameObject player = GameObject.FindGameObjectWithTag("player");
+            if (player == null)
             {
-                
-                if (isbgm == true)
-                {
-                  
-                    // +++サウンド
-                    isbgm = false;
-                }
-                Human_isActive = true;
-               isActive = true; //アクティブにする
-                animator.SetBool("isActive", isActive);
-
-                //プレイヤーの方向に向かう
-                Vector2 dir = (player.transform.position - transform.position).normalized;
-                move = dir * Human_speed;
-
-                rbody.linearVelocity = move;
-
-                float rad = Mathf.Atan2(dir.y, dir.x);
-                float angle = rad * Mathf.Rad2Deg;
-
-                angle = Mathf.Round(angle);
-
-                //移動角度でアニメーションを変更する
-                int Distinct;
-                if (angle >= -45 && angle < 45)
-                {
-                    //右向き
-                    Distinct = 3;
-                }
-                else if (angle >= 45 && angle <= 135)
-                {
-                    //上向き
-                    Distinct = 2;
-                }
-                else if (angle >= -135 && angle <= -45)
-                {
-                    //下向き
-                    Distinct = 0;
-                }
-                else
-                {
-                    //左向き
-                    Distinct = 1;
-                }
-                animator.SetInteger("Distinct", Distinct);
                 return;
             }
-            if (Human_isActive && dist >= Human_rectionDistance && !isRunning) 
+            if (player != null)
             {
-                Human_isActive = false;
-                isActive = false;
-                // 帰還モード開始
-                isRunning = true;
-                animator.SetBool("isActive", false);
+                //プレイヤーをの距離チェックとアクティブ化
+                float dist = Vector2.Distance(transform.position, player.transform.position);
+                if (dist < Human_rectionDistance)
+                {
 
+                    if (isbgm == true)
+                    {
+                        // 停止
+                        rbody.linearVelocity = Vector2.zero;
+                        // +++サウンド
+                        isbgm = false;
+                    }
+                    Human_isActive = true;
+                    isActive = true; //アクティブにする
+                    animator.SetBool("isActive", isActive);
+
+                    //プレイヤーの方向に向かう
+                    Vector2 dir = (player.transform.position - transform.position).normalized;
+                    move = dir * Human_speed;
+
+                    if (Human_axis == true)
+                    {
+                        rbody.linearVelocity = move;
+                    }
+
+
+                    float rad = Mathf.Atan2(dir.y, dir.x);
+                    float angle = rad * Mathf.Rad2Deg;
+
+                    angle = Mathf.Round(angle);
+
+                    //移動角度でアニメーションを変更する
+                    int Distinct;
+                    if (angle >= -45 && angle < 45)
+                    {
+                        //右向き
+                        Distinct = 3;
+                    }
+                    else if (angle >= 45 && angle <= 135)
+                    {
+                        //上向き
+                        Distinct = 2;
+                    }
+                    else if (angle >= -135 && angle <= -45)
+                    {
+                        //下向き
+                        Distinct = 0;
+                    }
+                    else
+                    {
+                        //左向き
+                        Distinct = 1;
+                    }
+                    animator.SetInteger("Distinct", Distinct);
+                    return;
+                }
+                if (Human_isActive && dist >= Human_rectionDistance && !isRunning)
+                {
+                    Human_isActive = false;
+                    isActive = false;
+                    // 帰還モード開始
+                    isRunning = true;
+                    animator.SetBool("isActive", false);
+
+                }
             }
+            //うろつき処理
+
+            Wander();
         }
-        //うろつき処理
-        Wander();
     }
     void Wander()
     {

@@ -17,7 +17,7 @@ public static class GameStatus
 
 public class PlayerControll : MonoBehaviour
 {
-    public static bool axis = false;
+    public static bool axis = false;//プレイヤーの移動に制限
     public float speed = 3.0f;    // 移動スピード
     int direction = 0;            // 移動方向
     float axisH;                  // 横軸
@@ -42,11 +42,13 @@ public class PlayerControll : MonoBehaviour
     public AudioClip Player_Sound_Item_HP_UP;        //アイテムに触れたときのSE
     public AudioClip Player_Sound_Enemy_Touch;       //敵に触れたときのSE
     public AudioClip Player_Sound_MOVE;       //動く時のSE
+
+    // +++  オーディオ
+    //public AudioSource Player_Sound_MOVE_Audio;
     // p1からp2の角度を返す
     float GetAngle(Vector2 p1, Vector2 p2)
     {
        
-
         float angle;
         if (axisH != 0 || axisV != 0)
         {
@@ -85,7 +87,12 @@ public class PlayerControll : MonoBehaviour
         gameState = "playing";
 
         Debug.Log("start");
+        //if (Player_Sound_MOVE_Audio != null)
+        //{
+        //    Player_Sound_MOVE_Audio.clip = Player_Sound_MOVE;
+        //    Player_Sound_MOVE_Audio.loop = true; //ループ設定
 
+        //}
     }
 
     // Update is called once per frame
@@ -96,7 +103,7 @@ public class PlayerControll : MonoBehaviour
         {
             return;
         }
-        if (axis == true)
+        //if (axis == true)
         {
             axisH = Input.GetAxisRaw("Horizontal");  // 左右キー入力
             axisV = Input.GetAxisRaw("Vertical");   // 上下キー入力
@@ -266,7 +273,7 @@ public class PlayerControll : MonoBehaviour
             {
                 //ダメージフラグ ON
                 inDamage = true;
-
+                //rbody.simulated = false;
                 //移動停止
                 rbody.linearVelocity =  Vector2.zero;
                 //敵キャラの反対方向にヒットバックさせる
@@ -298,7 +305,7 @@ public class PlayerControll : MonoBehaviour
             {
                 //ダメージフラグ ON
                 inDamage = true;
-
+                //rbody.simulated = false;
                 //移動停止
                 rbody.linearVelocity = Vector2.zero;
                 //敵キャラの反対方向にヒットバックさせる
@@ -323,6 +330,7 @@ public class PlayerControll : MonoBehaviour
     void DamageEnd()
     {
         inDamage = false;//ダメージフラグOFF
+        //rbody.simulated = true;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;//スプライトを元に戻す
         rbody.linearVelocity = new Vector2(zero_speed, zero_speed);//移動停止
     }
@@ -533,8 +541,7 @@ public class PlayerControll : MonoBehaviour
             {
                 //サウンドを鳴らす
                 soundPlayer.PlayOneShot(Player_Sound_MOVE);
-            }
-                                     
+            }        
         }
     }
   
