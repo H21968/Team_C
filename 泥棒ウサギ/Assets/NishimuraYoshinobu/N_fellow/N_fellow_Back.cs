@@ -1,13 +1,17 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの後ろに物を追従させる制御
+/// </summary>
+                                   
 public class N_fellow_Back : MonoBehaviour
 {
-    public float speed = 3.0f;    // 移動スピード
-    public float Player_Direction;// プレイヤーの向き
+    public float speed = 3.0f;           // 移動スピード
+    public float Player_Direction;       // プレイヤーの向き
 
-    Rigidbody2D rbody;            // Rigid body2
-    Animator animator;            // Animator
+    Rigidbody2D rbody;                   // Rigid body2
+    Animator animator;                   // Animator
 
     public PlayerControll Player_Ctrl;   // PlayerControll
 
@@ -26,6 +30,11 @@ public class N_fellow_Back : MonoBehaviour
     {
         Target_Pos();
     }
+
+    /// <summary>
+    /// 移動方向でアニメーションを変更する制御
+    /// </summary>
+    /// <param name="dir"></param>
     void Direction_Back(Vector2 dir)
     {
         float rad = Mathf.Atan2(dir.y, dir.x);
@@ -34,35 +43,38 @@ public class N_fellow_Back : MonoBehaviour
         int Distinct2;
         if (angle2 >= -45 && angle2 < 45)
         {
-            //右向き
+            // 右向き
             Distinct2 = 3;
             Player_Direction = 3;
         }
         else if (angle2 >= 45 && angle2 <= 135)
         {
-            //上向き
+            // 上向き
             Distinct2 = 2;
             Player_Direction = 2;
         }
         else if (angle2 >= -135 && angle2 <= -45)
         {
-            //下向き
+            // 下向き
             Distinct2 = 0;
             Player_Direction = 0;
         }
         else
         {
-            //左向き
+            // 左向き
             Distinct2 = 1;
             Player_Direction = 1;
         }
         animator.SetInteger("Distinct", Distinct2);
     }
+    /// <summary>
+    /// プレイヤーの後ろに物をおく制御
+    /// </summary>
     void Target_Pos()
     {
         if (Player_Ctrl == null || Playes == null)
         { return; }
-        //プレイヤーの後ろの位置を求める
+        // プレイヤーの後ろの位置を求める
         Vector2 target = Playes.position;
 
        if (Player_Direction == 0)
@@ -82,11 +94,11 @@ public class N_fellow_Back : MonoBehaviour
             target += new Vector2(-Back_target_Position,0);
         }
 
-        //そこへ移動
+        // そこへ移動
         Vector2 newPos = Vector2.MoveTowards(transform.position, target,speed*Time.deltaTime);
         rbody.MovePosition(newPos);
 
-        //キャラの向きを更新
+        // キャラの向きを更新
         Direction_Back(target - (Vector2)transform.position);
     }
 }

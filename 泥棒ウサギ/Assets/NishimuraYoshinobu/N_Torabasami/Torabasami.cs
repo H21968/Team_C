@@ -1,4 +1,4 @@
-//N_Torabasami
+// N_Torabasami
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,21 +6,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Torabasami : MonoBehaviour//クラス
+/// <summary>
+/// トラップの制御
+/// </summary>
+
+public class Torabasami : MonoBehaviour// クラス
 {
     //ヒットポイント
-    public int torabasami_hp = 10;//このエネミーの? 10
-    public float damage;//プレイヤーに与えるダメージ量
+    public int torabasami_hp = 10;// このエネミーの? 10
+    public float damage;          // プレイヤーのHPを減らす
 
-    public float rectionDistance = 0.1f;
+    public float rectionDistance = 0.1f; //プレイヤーとの距離
     
-    bool Anime_Bool = false;
-    bool Anime_Close = false;
-    Rigidbody2D rbody;// Rigidbody2D
-    Animator animator;//Animation
+    bool Anime_Bool = false;  // トラばさみのアニメーション
+    bool Anime_Close = false; // トラばさみの閉じるアニメーション
+    Rigidbody2D rbody;        // Rigidbody2D
+    Animator animator;        // Animation
 
-    bool isActive = false;//アクティブフラグ
-    public int arrangeId = 0;//配置の識別に使う
+    bool isActive = false;    // アクティブフラグ
+    public int arrangeId = 0; // 配置の識別に使う
 
     // +++ サウンド追加
     public AudioClip Trap_sound;   //トラばさみが閉じたのSE
@@ -28,8 +32,8 @@ public class Torabasami : MonoBehaviour//クラス
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      rbody = GetComponent<Rigidbody2D>();//Rigidbody2Dを得る
-      animator = GetComponent<Animator>();//Animatorを得る
+      rbody = GetComponent<Rigidbody2D>();// Rigidbody2Dを得る
+      animator = GetComponent<Animator>();// Animatorを得る
     }
 
     // Update is called once per frame
@@ -73,7 +77,7 @@ public class Torabasami : MonoBehaviour//クラス
 
                 GameStatus.player_hp -= ((int)damage);
                 Debug.Log("プレイヤーがダメージを受ける");
-                // +++サウンド
+                // +++サウンド+++
                 AudioSource soundPlayer = GetComponent<AudioSource>();
               
 
@@ -86,6 +90,10 @@ public class Torabasami : MonoBehaviour//クラス
             }
         }
     }
+    /// <summary>
+    /// トラばさみが閉じるアニメーションの管理
+    /// </summary>
+    /// <param name="amount"></param>
     public void TakeDamage(int amount)
     {
 
@@ -100,24 +108,24 @@ public class Torabasami : MonoBehaviour//クラス
             Anime_Close = true;
             animator.SetBool("Anime_int", Anime_Close);
            
-            //破壊処理
-            //あたりを消す
+            // 破壊処理
+            // あたりを消す
             GetComponent<CapsuleCollider2D>().enabled = false;
            
-            //0.5秒後に消す
+            // 0.5秒後に消す
             Destroy(gameObject, 0.5f);
         }
     }
     void Touch_Sound_Torabasami()
     {
-        // +++サウンド
+        // +++サウンド+++
         AudioSource soundPlayer = GetComponent<AudioSource>();
         if (soundPlayer != null)
         {
-            //サウンドを止める
+            // サウンドを止める
             soundPlayer.Stop();
 
-            //サウンドを鳴らす
+            // サウンドを鳴らす
             soundPlayer.PlayOneShot(Trap_sound);
         }
     }

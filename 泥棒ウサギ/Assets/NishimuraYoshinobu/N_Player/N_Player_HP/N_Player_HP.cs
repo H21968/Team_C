@@ -2,9 +2,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.LightAnchor;
 
+/// <summary>
+/// プレイヤーのHP
+/// </summary>
+
 public class N_Player_HP : MonoBehaviour
 {
-    int HP;
+    int HP;                       // プレイヤーのHP
     Rigidbody2D rbody;            // Rigid body2
     Animator animator;            // Animator
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,30 +22,36 @@ public class N_Player_HP : MonoBehaviour
     void Update()
     {
         GameObject player = GameObject.FindGameObjectWithTag("player");
+       
+        // プレイヤーのHPが4から上の場合の描写
         if (GameStatus.player_hp >= 4)
         {
             HP = 4;
-            //Debug.Log(HP);
+            
         }
+        // プレイヤーのHPが3の時の描写
         if (GameStatus.player_hp == 3)
         {
             HP = 3;
-            //Debug.Log(HP);
+         
         }
+        // プレイヤーのHPが2の時の描写
         if (GameStatus.player_hp == 2)
         {
             HP = 2;
-            //Debug.Log(HP);
+            
         }
+        //　プレイヤーのHPが1の時の描写
         if (GameStatus.player_hp == 1)
         {
             HP = 1;
-            //Debug.Log(HP);
+            
         }
+        // プレイヤーのHPが0の時の描写
         if (GameStatus.player_hp <= 0)
         {
             HP = 0;
-            //Debug.Log(HP);
+     
         }
 
             animator.SetInteger("HP_Down", HP);

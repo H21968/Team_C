@@ -1,15 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵エネミー接敵時に鳴る曲を管理する
+/// </summary>
 public class N_Enemy_Sound : MonoBehaviour
 {
-    public float rectionDistance = 6.0f;
+    public float rectionDistance = 6.0f;    // 敵エネミーが接近していることを決める距離
 
-    bool isActive = false;//アクティブフラグ
+    bool isActive = false;                  // アクティブフラグ
 
-    // +++ サウンド追加
-    public AudioClip enemy_access;          //敵が接近している
-    public AudioSource enemyAudioSource;
+    // +++サウンド追加+++
+
+    /// <summary>
+    /// 敵が接近している時のBGM
+    /// </summary>
+    public AudioClip enemy_access;       
+    /// <summary>
+    /// BGM再生のAudioSource
+    /// </summary>
+    public AudioSource enemyAudioSource;    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,7 +54,7 @@ public class N_Enemy_Sound : MonoBehaviour
         }
         if (!isActive)
         {
-            Sound_Stop();
+            Sound_Stop(); // BGMを止める
         }
 
 
@@ -55,9 +65,9 @@ public class N_Enemy_Sound : MonoBehaviour
         {
             if (!enemyAudioSource.isPlaying)// 再生中でなければ鳴らす
             {
-                //サウンドを鳴らす
+                // サウンドを鳴らす
                
-               // bgmSource.PlayOneShot(enemy_access);
+                // bgmSource.PlayOneShot(enemy_access);
                 enemyAudioSource.Play();
             }
 
@@ -69,7 +79,7 @@ public class N_Enemy_Sound : MonoBehaviour
     {
         if (enemyAudioSource != null && enemyAudioSource.isPlaying)
         {
-            //サウンドを止める
+            // サウンドを止める
             enemyAudioSource.Stop();
         }
     }
