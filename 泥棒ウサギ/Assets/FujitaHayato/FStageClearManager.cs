@@ -73,30 +73,6 @@ public class FStageClearManager : MonoBehaviour
         StageClearManager.mise1 = StageClearManager.mise1;
         StageClearManager.mise2 = StageClearManager.mise2;
 
-        ////ステージクリアしてるか用
-        //if (StageClearManager.hatake1 == true)
-        //{
-        //    StageClearManager.stage1 = true;
-
-        //    if (StageClearManager.hatake2 == true)
-        //    {
-        //        StageClearManager.stage2 = true;
-
-        //        if (StageClearManager.mise1 == true)
-        //        {
-        //            StageClearManager.stage3 = true;
-
-        //            if (StageClearManager.mise2 == true)
-        //            {
-        //                StageClearManager.stage4 = true;
-
-        //                StageClearManager.allclear = true;
-        //            }
-        //        }
-        //    }
-        //}
-
-
     }
 
     //画像を非表示にする

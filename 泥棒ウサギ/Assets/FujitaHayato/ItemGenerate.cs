@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class ItemGenerate : MonoBehaviour
 {
-    //// 現在のシーンのアイテムポップ位置を設定する
-    //public GameObject ItemPop_0;
-    //public GameObject ItemPop_1;
-
     public GameObject[] itemPrefabs;   // アイテム本体
     public Transform[] popPoints;      // 生成位置
 
@@ -23,18 +19,6 @@ public class ItemGenerate : MonoBehaviour
             Debug.LogError("FPlayerInventory が見つかりません。Player タグを確認してください。");
             return;
         }
-
-        ////　アイテム生成処理
-        //// popPoints の数だけループ
-        //for (int i = 0; i < popPoints.Length; i++)
-        //{
-        //    // 配列の長さを超えないようにアイテムを選択
-        //    int itemIndex = i % itemPrefabs.Length;
-
-        //    // アイテムを生成
-        //    Instantiate(itemPrefabs[itemIndex], popPoints[i].position, Quaternion.identity);
-        //}
-
         //// 所持状況をチェックして生成するか判断する、生成位置はアイテムポップ位置
 
         // 所持状況をチェックして生成するループに置き換え
