@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// ƒgƒ‰ƒbƒv‚Ì§Œä
+/// </summary>
 
 public class N_Trap2 : MonoBehaviour
 {

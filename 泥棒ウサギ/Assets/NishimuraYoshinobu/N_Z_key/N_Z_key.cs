@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Zキーの入力感知
+/// </summary>
+
 public class N_Z_key : MonoBehaviour
 {
     public float Z_Delay = 2f;//Zキーを押せる間隔
