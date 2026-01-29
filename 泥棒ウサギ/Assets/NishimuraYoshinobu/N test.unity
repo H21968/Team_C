@@ -2747,11 +2747,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3981433534778559234, guid: c7b2b6086e4f12a4289ada714856a2bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.654812
+      value: 14.97309
       objectReference: {fileID: 0}
     - target: {fileID: 3981433534778559234, guid: c7b2b6086e4f12a4289ada714856a2bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.513567
+      value: -4.275874
       objectReference: {fileID: 0}
     - target: {fileID: 3981433534778559234, guid: c7b2b6086e4f12a4289ada714856a2bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12132,11 +12132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4425208889234617087, guid: aec056da336436149b2ae4cfc95395fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.496508
+      value: 3.8832283
       objectReference: {fileID: 0}
     - target: {fileID: 4425208889234617087, guid: aec056da336436149b2ae4cfc95395fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.05042
+      value: -3.3842478
       objectReference: {fileID: 0}
     - target: {fileID: 4425208889234617087, guid: aec056da336436149b2ae4cfc95395fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12538,11 +12538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3981433534778559234, guid: c7b2b6086e4f12a4289ada714856a2bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3534136
+      value: 8.115313
       objectReference: {fileID: 0}
     - target: {fileID: 3981433534778559234, guid: c7b2b6086e4f12a4289ada714856a2bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4033086
+      value: 0.50145006
       objectReference: {fileID: 0}
     - target: {fileID: 3981433534778559234, guid: c7b2b6086e4f12a4289ada714856a2bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12606,12 +12606,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
+      propertyPath: Pan2D
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
+      propertyPath: m_Pitch
+      value: -0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: Priority
-      value: 59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: m_Volume
-      value: 0.467
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: m_Enabled
@@ -12620,7 +12628,11 @@ PrefabInstance:
     - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: e7fafb8989c1e614aa5e12f145e1e491, type: 3}
+      objectReference: {fileID: 8300000, guid: 60846cdd343461543bfd7e7aeb613b4b, type: 3}
+    - target: {fileID: 5424572591483038510, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0.949
+      objectReference: {fileID: 0}
     - target: {fileID: 6866481263886408279, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -12668,7 +12680,7 @@ PrefabInstance:
     - target: {fileID: 8517318721945150258, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: Player_Sound_MOVE
       value: 
-      objectReference: {fileID: 8300000, guid: e7fafb8989c1e614aa5e12f145e1e491, type: 3}
+      objectReference: {fileID: 8300000, guid: 60846cdd343461543bfd7e7aeb613b4b, type: 3}
     - target: {fileID: 8517318721945150258, guid: 7ba1971ae032f734da316170720cfdda, type: 3}
       propertyPath: Player_Sound_MOVE_Audio
       value: 
