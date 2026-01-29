@@ -95,7 +95,7 @@ public class FSoundManager : MonoBehaviour
     //SEÄ¶
     public void SEPlay(SEType type)
     {
-        if(type ==SEType.GameClear)
+        if (type ==SEType.GameClear)
         {
             GetComponent<AudioSource>().PlayOneShot(meGameClear);   //ƒQ[ƒ€ƒNƒŠƒA
         }

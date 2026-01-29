@@ -14,6 +14,8 @@ public class FClearMise2 : MonoBehaviour
 
     Image titleImage;               //画像を表示しているImageコンポーネント
 
+    bool situation = true;          //ゲームクリアorゲームオーバーの処理を一回だけ通す用
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,53 +50,63 @@ public class FClearMise2 : MonoBehaviour
         //ゲームクリアした時
         if (PlayerControll.gameState == "gameclear")
         {
-            FRoomManager.doorNumber = 0;
-
-            mainImage.SetActive(true);      //画像を表示する
-
-            mainImage.GetComponent<Image>().sprite = gameClearSpr;    //画像を設定する
-
-            //StageClearManagerをtureにした
-            StageClearManager.mise2 = true;
-
-            //ステージクリアしてるか用
-            if (StageClearManager.hatake1 == true)
+            if(situation==true)
             {
-                StageClearManager.stage1 = true;
+                FRoomManager.doorNumber = 0;
 
-                if (StageClearManager.hatake2 == true)
+                mainImage.SetActive(true);      //画像を表示する
+
+                mainImage.GetComponent<Image>().sprite = gameClearSpr;    //画像を設定する
+
+                //StageClearManagerをtureにした
+                StageClearManager.mise2 = true;
+
+                //ステージクリアしてるか用
+                if (StageClearManager.hatake1 == true)
                 {
-                    StageClearManager.stage2 = true;
+                    StageClearManager.stage1 = true;
 
-                    if (StageClearManager.mise1 == true)
+                    if (StageClearManager.hatake2 == true)
                     {
-                        StageClearManager.stage3 = true;
+                        StageClearManager.stage2 = true;
 
-                        if (StageClearManager.mise2 == true)
+                        if (StageClearManager.mise1 == true)
                         {
-                            StageClearManager.stage4 = true;
+                            StageClearManager.stage3 = true;
 
-                            StageClearManager.allclear = true;
+                            if (StageClearManager.mise2 == true)
+                            {
+                                StageClearManager.stage4 = true;
+
+                                StageClearManager.allclear = true;
+                            }
                         }
                     }
                 }
-            }
 
-            //SE再生
-            FSoundManager.soundManager.SEPlay(SEType.GameClear);
+                //SE再生
+                FSoundManager.soundManager.SEPlay(SEType.GameClear);
+                situation = false;
+            }
+           
         }
         //ゲームオーバーになった時
         else if (PlayerControll.gameState == "gameover")
         {
-            FRoomManager.doorNumber = 0;
+            if (situation == true)
+            {
+                FRoomManager.doorNumber = 0;
 
-            mainImage.SetActive(true);      //画像を表示する
+                mainImage.SetActive(true);      //画像を表示する
 
-            mainImage.GetComponent<Image>().sprite = gameOverSpr;    //画像を設定する
+                mainImage.GetComponent<Image>().sprite = gameOverSpr;    //画像を設定する
 
 
-            //SE再生
-            FSoundManager.soundManager.SEPlay(SEType.GameOver);
+                //SE再生
+                FSoundManager.soundManager.SEPlay(SEType.GameOver);
+                situation = false;
+            }
+            
         }
 
         else if (PlayerControll.gameState == "playing")
