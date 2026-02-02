@@ -171,7 +171,7 @@ MonoBehaviour:
   zero_speed: 0
   Player_Sound_Item_Get: {fileID: 8300000, guid: ae66633da11ac17439d7b47120009382, type: 3}
   Player_Sound_Item_Speed_Down: {fileID: 8300000, guid: ff91bed10dc41b540991f2c60adfc567, type: 3}
-  Player_Sound_Item_Speed_UP: {fileID: 8300000, guid: 96a4ac4f33ea48d4796b345aff83802b, type: 3}
+  Player_Sound_Item_Speed_UP: {fileID: 8300000, guid: 13682ac7c10418c43b1a62d5ba94a8c4, type: 3}
   Player_Sound_Item_HP_UP: {fileID: 8300000, guid: 00626b4ef6bde4d499d02e70b48a05be, type: 3}
   Player_Sound_Enemy_Touch: {fileID: 8300000, guid: e8cd6bbdcab20a9409e4c21e4f56ee69, type: 3}
   Player_Sound_MOVE: {fileID: 8300000, guid: 8b1d091e34fb4ad4a8c5611c4edabfc7, type: 3}
@@ -281,7 +281,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 96a4ac4f33ea48d4796b345aff83802b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 13682ac7c10418c43b1a62d5ba94a8c4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.212
   m_Pitch: 1
