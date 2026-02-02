@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c6e1946b9846a4bbe209f3733e0f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectionDistance: 6
+  rectionDistance: 5
   enemy_access: {fileID: 8300000, guid: d65c2aec0dd1f864a89568604f93a457, type: 3}
   enemyAudioSource: {fileID: 0}
