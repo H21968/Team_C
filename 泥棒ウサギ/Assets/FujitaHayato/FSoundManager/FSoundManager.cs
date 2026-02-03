@@ -15,6 +15,7 @@ public enum SEType
     GameClear,  //ゲームクリア
     GameOver,   //ゲームオーバー
     ZKey,       //Zキーを押したとき
+    IdowKey,    //矢印キーを押したとき
 }
 
 public class FSoundManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class FSoundManager : MonoBehaviour
     public AudioClip meGameClear;   //ゲームクリア
     public AudioClip meGameOver;    //ゲームオーバー
     public AudioClip seZKey;        //Zキーを押した時
+    public AudioClip idouKey;       //矢印キーを押した時
 
     public static FSoundManager soundManager;   //最初のSoundManagerを保存する変数
 
@@ -106,6 +108,10 @@ public class FSoundManager : MonoBehaviour
         else if (type == SEType.ZKey)
         {
             GetComponent<AudioSource>().PlayOneShot(seZKey);   //Zキー押した時
+        }
+        else if (type == SEType.IdowKey)
+        {
+            GetComponent<AudioSource>().PlayOneShot(idouKey);   //矢印キー押した時
         }
     }
 
